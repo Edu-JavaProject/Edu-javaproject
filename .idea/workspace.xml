@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="이사했습니다">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/choongang/academy/Test.java" afterDir="false" />
+    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="이사 후 청소 완료">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/LectureManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/LectureManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/StudentManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/searchLecList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/searchLecList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/searchStuList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/cost.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/finacialRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/financialView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/income.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/payroll.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/student/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/student/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/student/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/student/StudentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/student/StudentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/student/StudentView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
   </component>
@@ -66,13 +58,26 @@
       <recent name="D:\EduArt\src" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.test">
+  <component name="RunManager" selected="애플리케이션.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="choongang.student.Main" />
       <module name="EduArt" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="choongang.student.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="choongang.academy.Test" />
+      <module name="EduArt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="choongang.academy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,8 +100,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.test" />
         <item itemvalue="애플리케이션.Main" />
+        <item itemvalue="애플리케이션.Test" />
+        <item itemvalue="애플리케이션.test" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681280052802</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="이사 후 청소 완료">
+      <created>1681281155479</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681281155479</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,7 +157,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="develop" />
+                        <option value="sangchun" />
                       </list>
                     </value>
                   </entry>
@@ -159,6 +172,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new Repo" />
     <MESSAGE value="이사했습니다" />
-    <option name="LAST_COMMIT_MESSAGE" value="이사했습니다" />
+    <MESSAGE value="이사 후 청소 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="이사 후 청소 완료" />
   </component>
 </project>

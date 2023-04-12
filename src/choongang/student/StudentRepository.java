@@ -1,5 +1,7 @@
 package choongang.student;
 
+import choongang.academy.LectureManagement;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +13,8 @@ public class StudentRepository {
 
     static {
         studentList = new HashMap<>();
+        studentList.put("hong",new Student("hong","1234","홍길동","abc@aaa.com","25",Gender.MALE,100000));
+        studentList.put("dooly", new Student("dooly","1234","둘리","abc@aaa.com","25",Gender.FEMALE,1000000));
     }
 
     /**
@@ -40,4 +44,10 @@ public class StudentRepository {
         return findStudentById(id) != null;
     }
 
+
+    // 선택한 강의를 신청 강의 목록에 해주는 기능
+    public void addLecture(String inputId, LectureManagement lecture) {
+        Student studentById = findStudentById(inputId);
+        studentById.requestClass.add(lecture);
+    }
 }
