@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="new Repo">
-      <change afterPath="$PROJECT_DIR$/src/TestMain.java" afterDir="false" />
+    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="230412 아카데미">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +19,18 @@
       <list>
         <option value="Class" />
       </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="highsky134 &lt;sangchun134@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="academy" />
+      </map>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -31,12 +48,24 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/user/Desktop/SnackManageProgram",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\EduArt\src\choongang\financial" />
+      <recent name="D:\EduArt\src\choongang\academy" />
+      <recent name="D:\EduArt\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="choongang.academy" />
+    </key>
+  </component>
+  <component name="RunManager" selected="애플리케이션.Test">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="choongang.student.Main" />
       <module name="EduArt" />
@@ -50,8 +79,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="choongang.academy.Test" />
+      <module name="EduArt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="choongang.academy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="choongang.financial.test" />
+      <module name="EduArt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="choongang.financial.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.Test" />
+        <item itemvalue="애플리케이션.test" />
+        <item itemvalue="애플리케이션.Main" />
+        <item itemvalue="애플리케이션.Test" />
         <item itemvalue="애플리케이션.Main" />
       </list>
     </recent_temporary>
@@ -72,11 +131,64 @@
       <option name="project" value="LOCAL" />
       <updated>1681279872635</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="new Repo">
+      <created>1681279906250</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681279906250</updated>
+    </task>
+    <task id="LOCAL-00003" summary="이사했습니다">
+      <created>1681280052802</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681280052802</updated>
+    </task>
+    <task id="LOCAL-00004" summary="230412 아카데미">
+      <created>1681296708633</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681296708633</updated>
+    </task>
+    <task id="LOCAL-00005" summary="230412 아카데미">
+      <created>1681296754625</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681296754625</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="jisong" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new Repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="new Repo" />
+    <MESSAGE value="이사했습니다" />
+    <MESSAGE value="230412 아카데미" />
+    <option name="LAST_COMMIT_MESSAGE" value="230412 아카데미" />
   </component>
 </project>
