@@ -1,5 +1,6 @@
 package choongang.academy;
 
+import choongang.financial.FinancialView;
 import choongang.student.Student;
 import choongang.student.StudentRepository;
 import choongang.utility.Util;
@@ -47,6 +48,7 @@ public class AcademyView {
                     break;
                 case "4":
                     // 4. 회계 관리
+                    FinancialView.FinancialStart();
                     break;
                 case "0":
                     String answer = input("# 관리자 페이지를 종료 [y/n] : ");
@@ -81,7 +83,7 @@ public class AcademyView {
             case "2":
                 //2. 강의 검색하기
                 String keyword = input(" ＃ 강의명 or 강사명을 입력해주세요!\n▶▶ ");
-                ar.searchList(keyword);
+//                ar.searchList(keyword);
                 break;
             case "0":
                 return;
