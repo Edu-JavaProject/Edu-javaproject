@@ -100,7 +100,9 @@ public class FinancialView {
 
                 break;
             case "2" :
+
                 fr.addIncome();
+
                 break;
         }
     }

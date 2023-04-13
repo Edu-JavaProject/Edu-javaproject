@@ -3,6 +3,8 @@ package choongang.financial;
 
 
 
+import choongang.academy.AcademyRepository;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class FinacialRepository {
 
 
 
+
     public FinacialRepository() {
     }
 
@@ -39,6 +42,7 @@ public class FinacialRepository {
 
 
     public void addIncome() {
+
 
     }
 
@@ -62,6 +66,7 @@ public class FinacialRepository {
     }
 
     public void teacherPayroll() {
+
 
 
 

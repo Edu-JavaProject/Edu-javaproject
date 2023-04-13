@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AcademyRepository {
+
     public static List<LectureManagement> lectureList;
+
 
     static {
         lectureList = new ArrayList<>(
                 List.of(
+
                         new searchLecList("JAVA 입문", "김기범",
                                 20230403, 210810),
                         new searchLecList("C언어 입문", "전현무",
@@ -52,10 +55,12 @@ public class AcademyRepository {
         System.out.printf("============== 개설된 강의현황 (총 %d개) ============\n"
                 , lectureList.size());
         System.out.println("※ 강의명  |  강사명  |  개강일  |  수강료  ※");
+
         for (LectureManagement lm : lectureList) {
             System.out.println(lm.lecInform());
         }
     }
+
 
     /**
      * 강의 선택조회
@@ -91,5 +96,6 @@ public class AcademyRepository {
 
 
 }
+
 
 
