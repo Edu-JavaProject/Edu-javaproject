@@ -1,12 +1,14 @@
 package choongang.academy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AcademyRepository {
     private static List<LectureManagement> lectureList;
 
     static {
-        lectureList = List.of(new LectureManagement[]{
+        lectureList = new ArrayList<>(
+                List.of(
                 new searchLecList("JAVA 입문", "김기범",
                         20230403, 210810),
                 new searchLecList("C언어 입문", "전현무",
@@ -30,7 +32,7 @@ public class AcademyRepository {
                 new searchLecList("정보처리기사 실기 대비반", "무지개",
                         20230415, 120000)
 
-        });
+        ));
     }
     // 학생조회
 
@@ -38,6 +40,9 @@ public class AcademyRepository {
          * 강의 전체조회
          */
 
+    public List<LectureManagement> getLec(){
+        return lectureList;
+    }
     public void getLectureList() {
         System.out.printf("============== 개설된 강의현황 (총 %d개) ============\n"
                 , lectureList.size());
@@ -45,6 +50,7 @@ public class AcademyRepository {
         for (LectureManagement lm : lectureList) {
             System.out.println(lm.lecInform());
         }
+
 
         /**
          * 강의 선택조회

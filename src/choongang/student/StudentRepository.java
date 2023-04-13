@@ -1,16 +1,29 @@
 package choongang.student;
 
+import choongang.academy.LectureManagement;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 // 학생 들 저장소
 // 회원가입, 마이페이지, 정보 수정
 public class StudentRepository {
 
-    private static Map<String, Student> studentList; // 학생 목록
+    //    private static Map<String, Student> studentList; // 학생 목록
+    private static List<Student> studentList;
 
     static {
-        studentList = new HashMap<>();
+        studentList = new ArrayList<>(
+                List.of(
+                        new Student("hong", "1234", "홍길동", "abc@aaa.com", "25", Gender.MALE, 100000),
+                        new Student("dooly", "1234", "둘리", "abc@aaa.com", "25", Gender.FEMALE, 1000000)
+                )
+        );
     }
 
     /**
@@ -18,7 +31,10 @@ public class StudentRepository {
      * @return : id에 해당하는 student 객체 반환
      */
     public Student findStudentById(String id) {
-        return studentList.get(id);
+        for (Student student : studentList) {
+            if (student.getStudentId().equals(id)) return student;
+        }
+        return null;
     }
 
 
@@ -29,7 +45,7 @@ public class StudentRepository {
         String studentId = newStudent.getStudentId();
         if (isDuplicateId(studentId)) return false;
 
-        studentList.put(studentId, newStudent);
+        studentList.add(newStudent);
         return true;
     }
 
@@ -40,4 +56,10 @@ public class StudentRepository {
         return findStudentById(id) != null;
     }
 
+
+    // 선택한 강의를 신청 강의 목록에 해주는 기능
+    public void addLecture(String inputId, LectureManagement lecture) {
+        Student studentById = findStudentById(inputId);
+        studentById.requestClass.add(lecture);
+    }
 }
