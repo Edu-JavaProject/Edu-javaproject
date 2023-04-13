@@ -3,6 +3,8 @@ package choongang.financial;
 
 
 
+import choongang.academy.AcademyRepository;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,11 @@ public class FinacialRepository {
                     new Cost("관리비", "1,000,000", "4월1일","없음", new ArrayList<>()),
                     new Cost("렌탈비용", "500,000", "4월10일","없음", new ArrayList<>())
 
+            )
+    );
+    private static List<Income> incomeList = new ArrayList<>(
+            List.of(
+                    new Income("JAVA 입문",210810,"4월1일", "김나나")
             )
     );
 
@@ -38,30 +45,31 @@ public class FinacialRepository {
 
 
 
-    public void addIncome() {
-
+    public void addIncome(String lectureName, int tuitionFee, String incomeDate, String incomeMemo) {
+        Income income = new Income(lectureName, tuitionFee,incomeDate,incomeMemo);
+        incomeList.add(income);
+        System.out.println(incomeList);
     }
+
 
 
 
     public static List<Cost> repositCostList() {
-        List<Cost> costList = new ArrayList<>(
-                List.of(
-                        new Cost("월세", "2,000,000", "4월1일","없음", new ArrayList<>()),
-                        new Cost("관리비", "1,000,000", "4월1일","없음", new ArrayList<>()),
-                        new Cost("렌탈비용", "500,000", "4월10일","없음", new ArrayList<>())
 
-                )
-        );
-        List<Cost> list = costList.stream().
-                map(c -> new Cost(c.costTitle, c.cost, c.costDate, c.costMemo)).
-                collect(Collectors.toList());
-
-        return list;
+        return costList;
 
     }
+    public static List<Income> repositIncomeList() {
+        return incomeList;
+    }
 
-    public void teacherPayroll() {
+    public List<Teacher> teacherPayroll() {
+        List<Teacher> teacherList = AcademyRepository.lecturListForPayroll()
+                .stream().filter(d -> d.getLectureDate() > 20230400 && d.getLectureDate() < 20230501
+                )
+                .map(n -> new Teacher(n))
+                .collect(Collectors.toList());
+        return teacherList;
 
 
 

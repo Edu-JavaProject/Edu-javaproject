@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="마이페이지, 정보수정 만들어야됨">
+
+    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="new Repo">
+      <change afterPath="$PROJECT_DIR$/src/choongang/financial/Teacher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/student/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/student/StudentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/financial/FinacialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/financial/FinacialRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/financial/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/financial/Income.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,14 +43,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/Edu.javaproject",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+
   }
 }</component>
   <component name="RecentsManager">
@@ -56,6 +64,9 @@
       <recent name="D:\EduArt\src\choongang\financial" />
       <recent name="D:\EduArt\src\choongang\academy" />
       <recent name="D:\EduArt\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="choongang.financial" />
     </key>
   </component>
   <component name="RunManager" selected="애플리케이션.Main">
