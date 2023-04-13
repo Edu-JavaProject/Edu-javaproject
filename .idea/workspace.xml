@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="230412 아카데미">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyView.java" afterDir="false" />
-    </list>
+    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="230413 아카데미 수정" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681296754625</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="230413 아카데미 수정">
+      <created>1681363603751</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681363603751</updated>
+    </task>
+    <task id="LOCAL-00007" summary="230413 아카데미 수정">
+      <created>1681363618956</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681363618956</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,6 +199,7 @@
     <MESSAGE value="new Repo" />
     <MESSAGE value="이사했습니다" />
     <MESSAGE value="230412 아카데미" />
-    <option name="LAST_COMMIT_MESSAGE" value="230412 아카데미" />
+    <MESSAGE value="230413 아카데미 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="230413 아카데미 수정" />
   </component>
 </project>
