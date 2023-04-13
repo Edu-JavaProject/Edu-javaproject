@@ -100,11 +100,9 @@ public class FinancialView {
 
                 break;
             case "2" :
-                String incomeTitle = input("수입내역 :");
-                String income = input("금액 : ");
-                String incomeDate = input("날짜 : ");
-                String incomeMemo = input("비고 : ");
-                fr.addIncome(incomeTitle, Integer.parseInt(income),incomeDate,incomeMemo);
+
+                fr.addIncome();
+
                 break;
         }
     }

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
 
-    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="new Repo">
+    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="230413 아카데미 수정" />
       <change afterPath="$PROJECT_DIR$/src/choongang/financial/Teacher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" afterDir="false" />
@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/src/choongang/financial/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/financial/Income.java" afterDir="false" />
 
     </list>
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,9 +27,17 @@
     </option>
   </component>
   <component name="Git.Settings">
+
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="highsky134 &lt;sangchun134@gmail.com&gt;" />
+      </list>
+    </option>
+
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="develop" />
+
       </map>
     </option>
   </component>
@@ -49,27 +58,34 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+
     "last_opened_file_path": "D:/Edu.javaproject",
+
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
 
   }
-}</component>
+
+}]]></component>
+  <component name="RecentsManager">
+
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="choongang.student" />
     </key>
+
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\EduArt\src\choongang\financial" />
       <recent name="D:\EduArt\src\choongang\academy" />
       <recent name="D:\EduArt\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="choongang.financial" />
+
+      <recent name="choongang.academy" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.Main">
+  <component name="RunManager" selected="애플리케이션.Test">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="choongang.student.Main" />
       <module name="EduArt" />
@@ -111,6 +127,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.Test" />
+        <item itemvalue="애플리케이션.test" />
+        <item itemvalue="애플리케이션.Main" />
+        <item itemvalue="애플리케이션.Test" />
         <item itemvalue="애플리케이션.Main" />
         <item itemvalue="애플리케이션.Test" />
         <item itemvalue="애플리케이션.test" />
@@ -147,6 +167,37 @@
       <option name="project" value="LOCAL" />
       <updated>1681280052802</updated>
     </task>
+
+    <task id="LOCAL-00004" summary="230412 아카데미">
+      <created>1681296708633</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681296708633</updated>
+    </task>
+    <task id="LOCAL-00005" summary="230412 아카데미">
+      <created>1681296754625</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681296754625</updated>
+    </task>
+    <task id="LOCAL-00006" summary="230413 아카데미 수정">
+      <created>1681363603751</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681363603751</updated>
+    </task>
+    <task id="LOCAL-00007" summary="230413 아카데미 수정">
+      <created>1681363618956</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681363618956</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+
     <task id="LOCAL-00004" summary="이사 후 청소 완료">
       <created>1681281155479</created>
       <option name="number" value="00004" />
@@ -162,6 +213,7 @@
       <updated>1681297013993</updated>
     </task>
     <option name="localTasksCounter" value="6" />
+
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +227,9 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="sangchun" />
+
+                        <option value="jisong" />
+
                       </list>
                     </value>
                   </entry>
@@ -190,8 +244,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new Repo" />
     <MESSAGE value="이사했습니다" />
-    <MESSAGE value="이사 후 청소 완료" />
-    <MESSAGE value="마이페이지, 정보수정 만들어야됨" />
-    <option name="LAST_COMMIT_MESSAGE" value="마이페이지, 정보수정 만들어야됨" />
+
+    <MESSAGE value="230412 아카데미" />
+    <MESSAGE value="230413 아카데미 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="230413 아카데미 수정" />
+
   </component>
 </project>
