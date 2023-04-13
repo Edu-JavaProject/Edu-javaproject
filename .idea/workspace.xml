@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="이사했습니다">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/choongang/academy/Test.java" afterDir="false" />
+    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="new Repo">
+      <change afterPath="$PROJECT_DIR$/src/choongang/financial/Teacher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/LectureManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/LectureManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/StudentManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/searchLecList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/searchLecList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/searchStuList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/cost.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/finacialRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/financialView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/income.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/financial/payroll.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/financial/FinacialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/financial/FinacialRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/financial/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/financial/Income.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
   </component>
@@ -54,6 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/Edu.javaproject",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -64,6 +57,9 @@
       <recent name="D:\EduArt\src\choongang\financial" />
       <recent name="D:\EduArt\src\choongang\academy" />
       <recent name="D:\EduArt\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="choongang.financial" />
     </key>
   </component>
   <component name="RunManager" selected="애플리케이션.test">

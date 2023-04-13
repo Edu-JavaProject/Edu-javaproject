@@ -32,6 +32,11 @@ public class AcademyRepository {
 
         });
     }
+    public static List<LectureManagement> lecturListForPayroll() {
+        return lectureList;
+    }
+
+
     // 학생조회
 
         /**
