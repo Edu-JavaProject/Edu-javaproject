@@ -4,20 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b07d44e-14f9-4bd0-916d-ed5e07b4e0ac" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="3632294a-bed0-4f43-9b29-77b9aa776dad" name="변경" comment="develop">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/choongang/student/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/student/StudentRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="RunManager" selected="애플리케이션.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="choongang.student.Main" />
       <module name="EduArt" />
@@ -31,38 +34,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="choongang.financial.test" />
-      <module name="EduArt" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="choongang.financial.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="애플리케이션.Main" />
-        <item itemvalue="애플리케이션.test" />
       </list>
     </recent_temporary>
   </component>
   <component name="TaskManager">
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
