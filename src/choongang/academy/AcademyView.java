@@ -1,5 +1,6 @@
 package choongang.academy;
 
+import choongang.student.Student;
 import choongang.student.StudentRepository;
 import choongang.utility.Util;
 
@@ -18,7 +19,7 @@ public class AcademyView {
         sr = new StudentRepository();
     }
 
-    void managementMenu() {
+    public void managementMenu() {
         System.out.println("\n##### [중앙정보] 관리자 시스템 #####");
         System.out.println("☞ 1. 학생 조회");
         System.out.println("☞ 2. 강의 조회");
@@ -28,7 +29,7 @@ public class AcademyView {
         System.out.println("=============================");
     }
 
-    void viewProcess() {
+    public void viewProcess() {
         while (true) {
             managementMenu();
             String menuNum = input("▶▶ ");
@@ -64,7 +65,7 @@ public class AcademyView {
 // =========================================================================
 
     // 2. 강의조회
-    void searchLecList() {
+    public void searchLecList() {
         System.out.println("\n##### [중앙정보] 강의 조회 #####");
         System.out.println("☞ 1. 강의 전체 조회");
         System.out.println("☞ 2. 강의 검색하기");
@@ -88,6 +89,17 @@ public class AcademyView {
                 System.out.println("다시 입력해주세요\n");
 
         }
+    }
+
+    public void showStudent() {
+        List<Student> studentList = sr.getStudentList();
+        for (Student student : studentList) {
+            System.out.println("student = " + student);
+            List<LectureManagement> requestClass = student.getRequestClass();
+            System.out.println("requestClass = " + requestClass);
+
+        }
+
     }
 
 

@@ -62,4 +62,8 @@ public class StudentRepository {
         Student studentById = findStudentById(inputId);
         studentById.requestClass.add(lecture);
     }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
 }
