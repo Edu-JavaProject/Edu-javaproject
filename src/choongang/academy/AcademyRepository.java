@@ -92,6 +92,9 @@ public class AcademyRepository {
 
     }
 
+    public List<LectureManagement> getLec() {
+        return lectureList;
+    }
 
 
 
