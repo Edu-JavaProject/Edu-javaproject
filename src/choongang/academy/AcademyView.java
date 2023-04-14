@@ -1,7 +1,9 @@
 package choongang.academy;
 
+
 import choongang.financial.FinacialRepository;
 import choongang.financial.FinancialView;
+
 import choongang.student.Student;
 import choongang.student.StudentRepository;
 import choongang.utility.Util;
@@ -22,8 +24,10 @@ public class AcademyView {
     }
 
     public void managementMenu() {
+
         System.out.println("\n:¨·.·¨:\n" +
                 " `·. \uD83D\uDC97\uD83D\uDC9B\uD83D\uDC99무지개 관리자 시스템 ##### ★°*ﾟ");
+
         System.out.println("☞ 1. 학생 조회");
         System.out.println("☞ 2. 강의 조회");
         System.out.println("☞ 3. 강의 개설");
@@ -106,6 +110,7 @@ public class AcademyView {
         int lectureDate = Integer.parseInt(input("☞ 개강일(8자리) : "));
         int lectureFee = Integer.parseInt(input("☞ 수강료 : "));
         int countStudent = Integer.parseInt(input("☞ 수강정원 : "));
+
 
         LectureManagement newLecture =
                 new LectureManagement(lecName, teacherName, lectureDate, lectureFee, countStudent);

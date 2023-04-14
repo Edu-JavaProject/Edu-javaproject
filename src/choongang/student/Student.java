@@ -40,9 +40,20 @@ public class Student {
         this.acceptClass = new ArrayList<>();
     }
 
+    public Student(String studentId, String password, String name, String email, String age, Gender gender, int money, List<LectureManagement> requestClass) {
+        this.studentId = studentId;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.gender = gender;
+        this.money = money;
+        this.requestClass = requestClass;
+//        this.acceptClass = acceptClass;
+    }
     @Override
     public String toString() {
-        return "내 정보 [" +
+        return "[" +
                 "ID: '" + studentId + '\'' +
                 ", password: '" + password + '\'' +
                 ", 이름: '" + name + '\'' +
