@@ -1,0 +1,196 @@
+Index: src/choongang/academy/LectureManagement.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package choongang.academy;\r\n\r\nimport java.util.Objects;\r\n\r\npublic class LectureManagement {\r\n    private String lectureName;  // 강의명\r\n    private String teacherName;  // 강사명\r\n    private int lectureDate;    // 수강기간\r\n    private int lectureFee;   // 수강료\r\n    private int countStudent;   // 수강인원\r\n\r\n    public LectureManagement() {\r\n    }\r\n\r\n    public LectureManagement(String lectureName, String teacherName,\r\n                             int lectureDate, int lectureFee, int countStudent) {\r\n        this.lectureName = lectureName;\r\n        this.teacherName = teacherName;\r\n        this.lectureDate = lectureDate;\r\n        this.lectureFee = lectureFee;\r\n        this.countStudent = countStudent;\r\n    }\r\n    public LectureManagement(String lectureName, String teacherName,\r\n                             int lectureDate, int lectureFee) {\r\n        this.lectureName = lectureName;\r\n        this.teacherName = teacherName;\r\n        this.lectureDate = lectureDate;\r\n        this.lectureFee = lectureFee;\r\n    }\r\n\r\n\r\n    public String getLectureName() {\r\n        return lectureName;\r\n    }\r\n\r\n    public void setLectureName(String lectureName) {\r\n        this.lectureName = lectureName;\r\n    }\r\n\r\n    public String getTeacherName() {\r\n        return teacherName;\r\n    }\r\n\r\n    public void setTeacherName(String teacherName) {\r\n        this.teacherName = teacherName;\r\n    }\r\n\r\n    public int getLectureDate() {\r\n        return lectureDate;\r\n    }\r\n\r\n    public void setLectureDate(int lectureDate) {\r\n        this.lectureDate = lectureDate;\r\n    }\r\n\r\n    public int getLectureMoney() {\r\n        return lectureFee;\r\n    }\r\n\r\n    public void setLectureMoney(int lectureMoney) {\r\n        this.lectureFee = lectureMoney;\r\n    }\r\n\r\n    public int getCountStudent() {\r\n        return countStudent;\r\n    }\r\n\r\n    public void setCountStudent(int countStudent) {\r\n        this.countStudent = countStudent;\r\n    }\r\n\r\n    @Override\r\n    public boolean equals(Object o) {\r\n        if (this == o) return true;\r\n        if (o == null || getClass() != o.getClass()) return false;\r\n        LectureManagement that = (LectureManagement) o;\r\n        return lectureDate == that.lectureDate && lectureFee == that.lectureFee && countStudent == that.countStudent && Objects.equals(lectureName, that.lectureName) && Objects.equals(teacherName, that.teacherName);\r\n    }\r\n\r\n    @Override\r\n    public int hashCode() {\r\n        return Objects.hash(lectureName, teacherName, lectureDate, lectureFee, countStudent);\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"강의현황 [ \" +\r\n                \"강의명='\" + lectureName + '\\'' +\r\n                \", 강사명='\" + teacherName + '\\'' +\r\n                \", 개강일=\" + lectureDate +\r\n                \", 수강료=\" + lectureFee +\r\n                \", 수강인원=\" + countStudent +\r\n                ']';\r\n    }\r\n\r\n    public String lecInform() {\r\n        return String.format(\"# %s | %s | %d | %d원\"\r\n                , this.lectureName, this.teacherName, this.lectureDate\r\n                , this.lectureFee\r\n        );\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/choongang/academy/LectureManagement.java b/src/choongang/academy/LectureManagement.java
+--- a/src/choongang/academy/LectureManagement.java	
++++ b/src/choongang/academy/LectureManagement.java	
+@@ -84,19 +84,19 @@
+ 
+     @Override
+     public String toString() {
+-        return "강의현황 [ " +
++        return "· 강의현황 [ " +
+                 "강의명='" + lectureName + '\'' +
+                 ", 강사명='" + teacherName + '\'' +
+                 ", 개강일=" + lectureDate +
+-                ", 수강료=" + lectureFee +
+-                ", 수강인원=" + countStudent +
+-                ']';
++                ", 수강료=" + lectureFee + "원" +
++                ", 수강정원=" + countStudent + "명" +
++                " ]";
+     }
+ 
+     public String lecInform() {
+-        return String.format("# %s | %s | %d | %d원"
++        return String.format("# %s | %s | %d | %d원 | %d명 "
+                 , this.lectureName, this.teacherName, this.lectureDate
+-                , this.lectureFee
++                , this.lectureFee, this.countStudent
+         );
+     }
+ }
+Index: src/choongang/academy/AcademyRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package choongang.academy;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.stream.Collectors;\r\n\r\npublic class AcademyRepository {\r\n    public static List<LectureManagement> lectureList;\r\n\r\n    static {\r\n        lectureList = new ArrayList<>(\r\n                List.of(\r\n                        new searchLecList(\"JAVA 입문\", \"김기범\",\r\n                                20230403, 210810),\r\n                        new searchLecList(\"C언어 입문\", \"전현무\",\r\n                                20230408, 320000),\r\n                        new searchLecList(\"Android APP\", \"장보고\",\r\n                                20230408, 320000),\r\n                        new searchLecList(\"인공지능 이해, 챗봇만들기\", \"박나래\",\r\n                                20230415, 600000),\r\n                        new searchLecList(\"CUDA GPU 프로그래밍\", \"최화사\",\r\n                                20230415, 900000),\r\n                        new searchLecList(\"드론 프로그래밍\", \"한혜진\",\r\n                                20230429, 390000),\r\n                        new searchLecList(\"정보처리기사 실기 대비반\", \"무지개\",\r\n                                20230429, 120000),\r\n                        new searchLecList(\"R기반 빅데이터 분석, 시각화\", \"이장우\",\r\n                                20230503, 210000),\r\n                        new searchLecList(\"증강/가상현실 프로그래밍\", \"하연태\",\r\n                                20230503, 600000),\r\n                        new searchLecList(\"SW기업 입사 코딩테스트 대비반\", \"홍순규\",\r\n                                20230512, 500000),\r\n                        new searchLecList(\"코딩테스트와 개발실무를 모두 잡는 알고리즘\", \"김희민\",\r\n                                20230517, 240000)\r\n                ));\r\n    }\r\n\r\n    private Object LectureManagement;\r\n    private String keyword;\r\n\r\n    /**\r\n     * 학생조회\r\n     */\r\n\r\n\r\n\r\n    /**\r\n     * 강의 전체조회\r\n     */\r\n\r\n    public void getLectureList() {\r\n        System.out.printf(\"============== 개설된 강의현황 (총 %d개) ============\\n\"\r\n                , lectureList.size());\r\n        System.out.println(\"※ 강의명  |  강사명  |  개강일  |  수강료  ※\");\r\n        for (LectureManagement lm : lectureList) {\r\n            System.out.println(lm.lecInform());\r\n        }\r\n    }\r\n\r\n    /**\r\n     * 강의 선택조회\r\n     */\r\n    public void searchList(String keyword) {\r\n        lectureList.stream()\r\n                .filter(d -> d.getLectureName().contains(keyword) ||\r\n                        d.getTeacherName().contains(keyword))\r\n                .collect(Collectors.toList())\r\n                .forEach(d -> System.out.println(d));\r\n    }\r\n\r\n    /**\r\n     * 강의별 수강생 리스트\r\n     * */\r\n    public void lectureByList(String keyword) {\r\n        lectureList.stream()\r\n                .filter(d -> d.getLectureName().contains(keyword) ||\r\n                        d.getTeacherName().contains(keyword))\r\n                .collect(Collectors.toList())\r\n                .forEach(d -> System.out.println(d));\r\n    }\r\n    /**\r\n     * 강의 개설하기\r\n     * 개설한 강의는 강의배열에 추가\r\n     * */\r\n\r\n    public void addLecture() {\r\n\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/choongang/academy/AcademyRepository.java b/src/choongang/academy/AcademyRepository.java
+--- a/src/choongang/academy/AcademyRepository.java	
++++ b/src/choongang/academy/AcademyRepository.java	
+@@ -11,27 +11,27 @@
+         lectureList = new ArrayList<>(
+                 List.of(
+                         new searchLecList("JAVA 입문", "김기범",
+-                                20230403, 210810),
++                                20230403, 210810, 30),
+                         new searchLecList("C언어 입문", "전현무",
+-                                20230408, 320000),
++                                20230408, 320000, 25),
+                         new searchLecList("Android APP", "장보고",
+-                                20230408, 320000),
++                                20230408, 320000, 15),
+                         new searchLecList("인공지능 이해, 챗봇만들기", "박나래",
+-                                20230415, 600000),
++                                20230415, 600000, 10),
+                         new searchLecList("CUDA GPU 프로그래밍", "최화사",
+-                                20230415, 900000),
++                                20230415, 900000, 10),
+                         new searchLecList("드론 프로그래밍", "한혜진",
+-                                20230429, 390000),
++                                20230429, 390000, 20),
+                         new searchLecList("정보처리기사 실기 대비반", "무지개",
+-                                20230429, 120000),
++                                20230429, 120000, 15),
+                         new searchLecList("R기반 빅데이터 분석, 시각화", "이장우",
+-                                20230503, 210000),
++                                20230503, 210000, 30),
+                         new searchLecList("증강/가상현실 프로그래밍", "하연태",
+-                                20230503, 600000),
++                                20230503, 600000, 20),
+                         new searchLecList("SW기업 입사 코딩테스트 대비반", "홍순규",
+-                                20230512, 500000),
++                                20230512, 500000, 15),
+                         new searchLecList("코딩테스트와 개발실무를 모두 잡는 알고리즘", "김희민",
+-                                20230517, 240000)
++                                20230517, 240000, 30)
+                 ));
+     }
+ 
+@@ -51,7 +51,7 @@
+     public void getLectureList() {
+         System.out.printf("============== 개설된 강의현황 (총 %d개) ============\n"
+                 , lectureList.size());
+-        System.out.println("※ 강의명  |  강사명  |  개강일  |  수강료  ※");
++        System.out.println("※ 강의명  |  강사명  |  개강일  |  수강료  |  수강정원  ※");
+         for (LectureManagement lm : lectureList) {
+             System.out.println(lm.lecInform());
+         }
+@@ -83,7 +83,8 @@
+      * 개설한 강의는 강의배열에 추가
+      * */
+ 
+-    public void addLecture() {
++    public void addNewLecture() {
++        System.out.println("\n##### [중앙정보] 강의 개설 #####");
+ 
+     }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"09550458-cf9e-4934-b530-958cd6b0627a\" name=\"변경\" comment=\"230413 아카데미 수정\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"PREVIOUS_COMMIT_AUTHORS\">\r\n      <list>\r\n        <option value=\"highsky134 &lt;sangchun134@gmail.com&gt;\" />\r\n      </list>\r\n    </option>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"academy\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2OJXmYVVJWKBEx8W06IjJXFdwM4\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/user/Desktop/SnackManageProgram\",\r\n    \"project.structure.last.edited\": \"모듈\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\EduArt\\src\\choongang\\financial\" />\r\n      <recent name=\"D:\\EduArt\\src\\choongang\\academy\" />\r\n      <recent name=\"D:\\EduArt\\src\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"choongang.academy\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"애플리케이션.Test\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"choongang.student.Main\" />\r\n      <module name=\"EduArt\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"choongang.student.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Test\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"choongang.academy.Test\" />\r\n      <module name=\"EduArt\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"choongang.academy.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"test\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"choongang.financial.test\" />\r\n      <module name=\"EduArt\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"choongang.financial.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"애플리케이션.Test\" />\r\n        <item itemvalue=\"애플리케이션.test\" />\r\n        <item itemvalue=\"애플리케이션.Main\" />\r\n        <item itemvalue=\"애플리케이션.Test\" />\r\n        <item itemvalue=\"애플리케이션.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"애플리케이션 수준\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"디폴트 작업\">\r\n      <changelist id=\"09550458-cf9e-4934-b530-958cd6b0627a\" name=\"변경\" comment=\"\" />\r\n      <created>1681279818863</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1681279818863</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"new Repo\">\r\n      <created>1681279872635</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681279872635</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"new Repo\">\r\n      <created>1681279906250</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681279906250</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"이사했습니다\">\r\n      <created>1681280052802</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681280052802</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"230412 아카데미\">\r\n      <created>1681296708633</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681296708633</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"230412 아카데미\">\r\n      <created>1681296754625</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681296754625</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"230413 아카데미 수정\">\r\n      <created>1681363603751</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681363603751</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"230413 아카데미 수정\">\r\n      <created>1681363618956</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1681363618956</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"jisong\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"new Repo\" />\r\n    <MESSAGE value=\"이사했습니다\" />\r\n    <MESSAGE value=\"230412 아카데미\" />\r\n    <MESSAGE value=\"230413 아카데미 수정\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"230413 아카데미 수정\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,7 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="230413 아카데미 수정" />
++    <list default="true" id="09550458-cf9e-4934-b530-958cd6b0627a" name="변경" comment="Merge remote-tracking branch 'origin/academy' into jisong&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/choongang/academy/AcademyRepository.java&#10;#&#9;src/choongang/academy/AcademyView.java">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/AcademyRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/choongang/academy/LectureManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/LectureManagement.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/choongang/academy/searchLecList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/choongang/academy/searchLecList.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -40,17 +45,17 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "last_opened_file_path": "C:/Users/user/Desktop/SnackManageProgram",
+-    "project.structure.last.edited": "모듈",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Desktop/SnackManageProgram&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="D:\EduArt\src\choongang\financial" />
+@@ -169,7 +174,28 @@
+       <option name="project" value="LOCAL" />
+       <updated>1681363618956</updated>
+     </task>
+-    <option name="localTasksCounter" value="8" />
++    <task id="LOCAL-00008" summary="230413 아카데미 수정">
++      <created>1681363739170</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1681363739170</updated>
++    </task>
++    <task id="LOCAL-00009" summary="230413 아카데미 수정">
++      <created>1681363836643</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1681363836643</updated>
++    </task>
++    <task id="LOCAL-00010" summary="Merge remote-tracking branch 'origin/academy' into jisong&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/choongang/academy/AcademyRepository.java&#10;#&#9;src/choongang/academy/AcademyView.java">
++      <created>1681363961149</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1681363961149</updated>
++    </task>
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -200,6 +226,7 @@
+     <MESSAGE value="이사했습니다" />
+     <MESSAGE value="230412 아카데미" />
+     <MESSAGE value="230413 아카데미 수정" />
+-    <option name="LAST_COMMIT_MESSAGE" value="230413 아카데미 수정" />
++    <MESSAGE value="Merge remote-tracking branch 'origin/academy' into jisong&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/choongang/academy/AcademyRepository.java&#10;#&#9;src/choongang/academy/AcademyView.java" />
++    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/academy' into jisong&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/choongang/academy/AcademyRepository.java&#10;#&#9;src/choongang/academy/AcademyView.java" />
+   </component>
+ </project>
+\ No newline at end of file
