@@ -9,6 +9,7 @@ import choongang.student.StudentRepository;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AcademyRepository {
 
@@ -74,50 +75,54 @@ public class AcademyRepository {
             System.out.println(lm.lecInform());
         }
 
-
-    /**
-     * 강의 선택조회
-     */
-    public void searchList(String keyword) {
-        lectureList.stream()
-                .filter(d -> d.getLectureName().contains(keyword) ||
-                        d.getTeacherName().contains(keyword))
-                .collect(Collectors.toList())
-                .forEach(d -> System.out.println(d));
     }
-
-    /**
-     * 강의별 수강생 리스트
-     * */
-    public void lectureByStudentList() {
-
-    }
-
-    /**
-     * 강의 개설하기
-     * 개설한 강의는 강의배열에 추가
-     */
-    public void addNewLecture(LectureManagement newLecture)  {
-        lectureList.add(newLecture);
-    }
-
-    /**
-     * 수강신청 강의 리스트
-     */
-    public void requestLecList() {
-        List<LectureManagement> requestClass = st.getRequestClass();
-        System.out.println("requestClass = " + requestClass);
-
+        /**
+         * 강의 선택조회
+         */
+        public void searchList (String keyword){
+            lectureList.stream()
+                    .filter(d -> d.getLectureName().contains(keyword) ||
+                            d.getTeacherName().contains(keyword))
+                    .collect(Collectors.toList())
+                    .forEach(d -> System.out.println(d));
+        }
 
         /**
          * 강의별 수강생 리스트
          * */
+        public void lectureByStudentList () {
 
-    public List<LectureManagement> getLec() {
-        return lectureList;
-    }
+        }
 
-}
+        /**
+         * 강의 개설하기
+         * 개설한 강의는 강의배열에 추가
+         */
+        public void addNewLecture (LectureManagement newLecture){
+            lectureList.add(newLecture);
+        }
+
+        /**
+         * 수강신청 강의 리스트
+         */
+        public void requestLecList () {
+            List<LectureManagement> requestClass = st.getRequestClass();
+            System.out.println("requestClass = " + requestClass);
+
+
+            /**
+             * 강의별 수강생 리스트
+             * */
+
+
+        }
+
+        public List<LectureManagement> getLec () {
+            return lectureList;
+        }
+        public static List<LectureManagement> lecturListForPayroll () {
+            return lectureList;
+        }
 // 새 강의 개설
 
-
+    }
