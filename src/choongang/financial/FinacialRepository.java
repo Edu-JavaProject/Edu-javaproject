@@ -15,8 +15,9 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class FinacialRepository {
-   public Student onStuden = null;
+    public Student onStuden = null;
     StudentView sv;
+    private static AcademyRepository ar;
 
     private static List<Cost> costList = new ArrayList<>(
             List.of(
@@ -35,6 +36,7 @@ public class FinacialRepository {
     static {
         startDate = LocalDate.of(2023, 4, 1);
         endDate = LocalDate.of(2023, 5, 1);
+        ar = new AcademyRepository();
     }
 
     public FinacialRepository() {
@@ -51,10 +53,10 @@ public class FinacialRepository {
 
 
     public int addIncome(String lectureName, int tuitionFee, LocalDate incomeDate, String incomeMemo) {
-       int addSum = tuitionFee;
-       int sddMon =  repositIncomeList() +addSum;
+        int addSum = tuitionFee;
+        int sddMon = repositIncomeList() + addSum;
         StudentView.onStudent.setMoney(sddMon);
-       return sddMon;
+        return sddMon;
 
     }
 
@@ -71,7 +73,7 @@ public class FinacialRepository {
     //강의료 수입 - 4월 강의 진행하는 강사 명단
     public static int repositIncomeList() {
 //        int initIncome = 20000000;
-        int sum =   StudentView.onStudent.getMoney();
+        int sum = StudentView.onStudent.getMoney();
         StudentView.onStudent.setMoney(sum);
         return sum;
     }
@@ -81,7 +83,7 @@ public class FinacialRepository {
      */
     public static List<Payroll> teacherPayroll() {
 
-        List<Teacher> teacherList = AcademyRepository.lecturListForPayroll()
+        List<Teacher> teacherList = ar.lecturListForPayroll()
                 .stream().filter(d -> {
                     LocalDate Date = intToDate(d.getLectureDate());
                     return Date.isAfter(startDate) && Date.isBefore(endDate);
@@ -108,7 +110,6 @@ public class FinacialRepository {
     }
 
 
-
     public int studentFilter() {
         List<Student> studentList = StudentRepository.getStudentList();
         // 수강하는 강의 목록들 가져오기
@@ -127,7 +128,6 @@ public class FinacialRepository {
 
 
     //incomelist 한 번만 추가하고 이후엔 추가 되지 않도록 만들기.
-
 
 
     private static LocalDate intToDate(int date) {

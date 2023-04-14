@@ -97,7 +97,7 @@ public class AcademyView {
             case "2":
                 //2. 강의 검색하기
                 String keyword = input(" ＃ 강의명 or 강사명을 입력해주세요!\n▶▶ ");
-//                ar.searchList(keyword);
+                ar.searchList(keyword);
                 break;
             case "0":
                 return;
@@ -182,7 +182,7 @@ public class AcademyView {
          /*   } else if (searchLecKeyword.equals(targetLecKeyword)) {
                 System.out.println(" ＃ 해당 키워드의 강의는 없습니다. 다시 입력해주세요.");
                 delLecture();*/
-            } else {
+            } else if (searchLecKeyword.size() > 1) {
                 System.out.println(" ＃ 검색 키워드와 중복된 강의가 있습니다. \n    삭제할 강의를 번호로 선택해주세요!");
                 for (int i = 0; i < searchLecKeyword.size(); i++) {
                     System.out.printf("* %d. %s\n", i + 1, searchLecKeyword.get(i).lecInform());
@@ -191,12 +191,12 @@ public class AcademyView {
                 LectureManagement lm = searchLecKeyword.get(targetNum - 1);
 
                 ar.deleteLecture(targetLecKeyword);
+            } else {
+                System.out.println(" ＃ 해당 키워드의 강의는 없습니다. 다시 입력해주세요.");
+                delLecture();
             }
         }
-        else if (searchLecKeyword.equals(targetLecKeyword)) {
-            System.out.println(" ＃ 해당 키워드의 강의는 없습니다. 다시 입력해주세요.");
-            delLecture();
-        }
+
     }
 }
 

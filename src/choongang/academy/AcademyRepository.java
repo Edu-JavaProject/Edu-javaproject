@@ -83,16 +83,17 @@ public class AcademyRepository {
         }
 
     }
-        /**
-         * 강의 선택조회
-         */
-        public void searchList (String keyword){
-            lectureList.stream()
-                    .filter(d -> d.getLectureName().contains(keyword) ||
-                            d.getTeacherName().contains(keyword))
-                    .collect(Collectors.toList())
-                    .forEach(d -> System.out.println(d));
-        }
+
+    /**
+     * 강의 선택조회
+     */
+    public void searchList(String keyword) {
+        lectureList.stream()
+                .filter(d -> d.getLectureName().contains(keyword) ||
+                        d.getTeacherName().contains(keyword))
+                .collect(Collectors.toList())
+                .forEach(d -> System.out.println(d));
+    }
 
 
     /**
@@ -101,7 +102,7 @@ public class AcademyRepository {
     public void lectureByStudentList() {
 
 
-        }
+    }
 
     /**
      * 강의 개설하기
@@ -136,8 +137,6 @@ public class AcademyRepository {
      * */
 
 
-
-
     /**
      * 수강신청 강의 리스트
      */
@@ -152,17 +151,9 @@ public class AcademyRepository {
     public List<LectureManagement> getLec() {
         return lectureList;
     }
+
+    public static List<LectureManagement> lecturListForPayroll(){
+        return lectureList;
+    }
 }
 
-
-        }
-
-        public List<LectureManagement> getLec () {
-            return lectureList;
-        }
-        public static List<LectureManagement> lecturListForPayroll () {
-            return lectureList;
-        }
-// 새 강의 개설
-
-    }
