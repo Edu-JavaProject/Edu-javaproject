@@ -1,16 +1,22 @@
 package choongang.academy;
 
+
+import java.util.Arrays;
+
 import choongang.student.Student;
 import choongang.student.StudentRepository;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static choongang.utility.Util.input;
 
 public class AcademyRepository {
+
 
     public static List<LectureManagement> lectureList;
     private static StudentRepository sr;
@@ -65,33 +71,37 @@ public class AcademyRepository {
     /**
      * 강의 전체조회
      */
+
     public void getLectureList() {
         System.out.printf("========== 개설된 강의현황 (총 %d개) =========\n"
                 , lectureList.size());
+
         System.out.println("※ 강의명  |  강사명  |  개강일  |  수강료  | 수강정원 ※");
 
         for (LectureManagement lm : lectureList) {
             System.out.println(lm.lecInform());
         }
-    }
 
-    /**
-     * 강의 선택조회
-     */
-    public void searchList(String keyword) {
-        lectureList.stream()
-                .filter(d -> d.getLectureName().contains(keyword) ||
-                        d.getTeacherName().contains(keyword))
-                .collect(Collectors.toList())
-                .forEach(d -> System.out.println(d));
     }
+        /**
+         * 강의 선택조회
+         */
+        public void searchList (String keyword){
+            lectureList.stream()
+                    .filter(d -> d.getLectureName().contains(keyword) ||
+                            d.getTeacherName().contains(keyword))
+                    .collect(Collectors.toList())
+                    .forEach(d -> System.out.println(d));
+        }
+
 
     /**
      * 강의별 수강생 리스트
      */
     public void lectureByStudentList() {
 
-    }
+
+        }
 
     /**
      * 강의 개설하기
@@ -145,4 +155,14 @@ public class AcademyRepository {
 }
 
 
+        }
 
+        public List<LectureManagement> getLec () {
+            return lectureList;
+        }
+        public static List<LectureManagement> lecturListForPayroll () {
+            return lectureList;
+        }
+// 새 강의 개설
+
+    }
