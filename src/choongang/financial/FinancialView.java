@@ -1,6 +1,10 @@
 package choongang.financial;
 
 
+
+
+import choongang.student.StudentView;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,7 +12,7 @@ import static choongang.utility.Util.*;
 
 
 public class FinancialView {
-
+public StudentView stview;
     static FinacialRepository fr;
 
     static {
@@ -21,8 +25,7 @@ public class FinancialView {
     //고정비용(월세, 관리비, 세금) 상수로 만들 것. 세금은 나가는 달이 정해져 있으므로 정하는 게 맞는지 볼 것
 
 
-    public static void FinancialStart() {
-
+    public void FinancialStart() {
 
         while (true) {
             System.out.println("##### 수입/지출 관리 ######");
@@ -32,7 +35,7 @@ public class FinancialView {
             System.out.println("☞3. 수입내역 조회");
             System.out.println("☞4. 인건비 조회");
             System.out.println("☞5. 이전 페이지로");
-            System.out.println("☞6. 프로그램 종료");
+            System.out.println("☞9. 로그아웃");
             System.out.println("=============================");
             String selNum = input("▶▶");
 
@@ -55,8 +58,8 @@ public class FinancialView {
                     break;
                 case "5":
                     return;
-                case "6":
-                    System.exit(0);
+                case "9":
+                    stview.login();
                     break;
                 default:
                     System.out.println("번호를 다시 입력해주세요");
@@ -89,8 +92,8 @@ public class FinancialView {
                 int income = Integer.parseInt(input("금액 : "));
                 String dateincome = (input("날짜(yyyymmdd) : "));
                 String incomeMemo = input("비고 : ");
-                fr.addIncome(incomeTitle, income, stringToDate(dateincome), incomeMemo);
-
+                int addSum = 10000000 +fr.addIncome(incomeTitle, income, stringToDate(dateincome), incomeMemo);
+                System.out.printf("이번달 총 수입 : %,d\n",addSum);
                 break;
         }
     }
@@ -98,11 +101,9 @@ public class FinancialView {
 
     private static void showIncomeList() {
         System.out.println("수입내역을 조회합니다");
-        System.out.print("|   강의명   |");
-        System.out.print("   강의료   |");
-        System.out.print("     날짜     |");
-        System.out.print("   결제자명   |\n");
-        fr.repositIncomeList();
+        System.out.print(" 이번달 총 수입 ");
+        int income = 10000000+fr.repositIncomeList();
+        System.out.printf("%,d\n",income);
 
     }
 
