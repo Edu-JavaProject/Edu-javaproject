@@ -4,8 +4,8 @@ public class test {
 
 
     public static void main(String[] args) {
-      FinancialView.FinancialStart();
-//      FinacialRepository.teacherPayroll();
+            FinancialView financialView = new FinancialView();
+        financialView.FinancialStart();
 
     }
 
