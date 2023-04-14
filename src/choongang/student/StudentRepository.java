@@ -73,7 +73,7 @@ public class StudentRepository {
         studentById.requestClass.add(lecture);
     }
 
-    public List<Student> getStudentList() {
+    public static List<Student> getStudentList() {
         return studentList;
     }
 }

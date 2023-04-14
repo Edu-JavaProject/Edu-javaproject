@@ -2,14 +2,14 @@ package choongang.financial;
 
 
 import choongang.academy.AcademyRepository;
+import choongang.academy.LectureManagement;
+import choongang.student.StudentRepository;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static choongang.utility.Util.*;
 import static java.util.stream.Collectors.toList;
 
 public class FinacialRepository {
@@ -22,9 +22,11 @@ public class FinacialRepository {
                     new Cost("세무사비용", 200000, LocalDate.of(2023, 4, 15), "없음", new ArrayList<>())
             )
     );
-    private static List<Income> incomeList = new ArrayList<>(
+    private static List<Income> incomeList
+            = new ArrayList<>(
             List.of(
                     new Income("JAVA 입문", 210810, LocalDate.of(2023, 4, 10), "김나나")
+
             )
     );
 
@@ -39,11 +41,14 @@ public class FinacialRepository {
     }
 
     public FinacialRepository() {
+
+
     }
 
     public void addCost(String costTitle, int cost, LocalDate costDate, String costMemo) {
 
         Cost c1 = new Cost(costTitle, cost, costDate, costMemo, new ArrayList<>());
+
         costList.add(c1);
 //        System.out.print(costList);
         repositCostList();
@@ -56,11 +61,9 @@ public class FinacialRepository {
 
     public void addIncome(String lectureName, int tuitionFee, LocalDate incomeDate, String incomeMemo) {
         Income income = new Income(lectureName, tuitionFee, incomeDate, incomeMemo);
+        new Income();
         incomeList.add(income);
-        repositIncomeList();
-
-
-//
+//        repositIncomeList();
     }
 
 
@@ -85,8 +88,27 @@ public class FinacialRepository {
                     LocalDate Date = LocalDate.of(year, month, day);
                     return Date.isAfter(startDate) && Date.isBefore(endDate);
                 })
-                .map(count -> count.getCountStudent())
-                .collect(toList());
+                .map(count -> count.getCountStudent()).collect(toList());
+
+
+        List<String> studentIn = StudentRepository.getStudentList().stream().map(name -> name.getName())
+                .collect(toList()).stream().collect(toList());
+        List<List<LectureManagement>> lectureIn = StudentRepository.getStudentList().stream().map(lecture -> lecture.getRequestClass()).collect(toList())
+                .stream().collect(toList());
+        Income income1 = new Income(lectureIn.get(0).get(0).getLectureName(), lectureIn.get(0).get(0).getLectureMoney(), intToDate(lectureIn.get(0).get(0).getLectureDate()), studentIn.get(0));
+
+        incomeList.add(income1);
+        for (int i = 0; i < StudentRepository.getStudentList().size(); i++) {
+            Income listofstudent = new Income(lectureIn.get(i).get(i).getLectureName(), lectureIn.get(i).get(i).getLectureMoney(), intToDate(lectureIn.get(i).get(i).getLectureDate()), studentIn.get(i));
+            System.out.println("listofstudent 확인하기 = " + listofstudent);
+        }
+
+
+        //        for (String s : collect1) {
+//            System.out.println("s = " + s);
+//            int length = collect1.size();
+//            collect1.get(length);
+
 
         for (Income income : incomeList) {
             System.out.println(income.info());
@@ -115,10 +137,7 @@ public class FinacialRepository {
 
         List<Teacher> teacherList = AcademyRepository.lecturListForPayroll()
                 .stream().filter(d -> {
-                    int year = d.getLectureDate() / 10000;
-                    int month = (d.getLectureDate() / 100) - year * 100;
-                    int day = d.getLectureDate() % 100;
-                    LocalDate Date = LocalDate.of(year, month, day);
+                    LocalDate Date = intToDate(d.getLectureDate());
                     return Date.isAfter(startDate) && Date.isBefore(endDate);
                 })
                 .map(n -> new Teacher(n))
@@ -141,6 +160,62 @@ public class FinacialRepository {
 
 
     }
+
+    public static void testmethod() {
+
+//        List<Student> studentList = StudentRepository.getStudentList();
+//        List<String> collect1 = studentList.stream().map(name -> name.getName()).collect(toList()).stream().collect(toList());
+//        for (String s : collect1) {
+//            System.out.println("s = " + s);
+//        int length = collect1.size();
+//        collect1.get(length);
+//
+//        }
+
+//
+        List<String> studentIn = StudentRepository.getStudentList().stream().map(name -> name.getName())
+                .collect(toList()).stream().collect(toList());
+        List<List<LectureManagement>> lectureIn = StudentRepository.getStudentList().stream().map(lecture -> lecture.getRequestClass()).collect(toList())
+                .stream().collect(toList());
+//        Income income1
+//                = new Income(lectureIn.get(0).get(0).getLectureName(), lectureIn.get(0).get(0).getLectureMoney(), intToDate(lectureIn.get(0).get(0).getLectureDate()), studentIn.get(0));
+//
+//        System.out.println(StudentRepository.getStudentList().size());//6
+
+//      Income listofstudent = new Income();
+        for (int i = 0; i < StudentRepository.getStudentList().size(); i++) {
+            if (StudentRepository.getStudentList().get(i).getRequestClass().size() >= 1) {
+                for (int j = 1; j < StudentRepository.getStudentList().get(i).getRequestClass().size(); j++) {
+                    Income studentInLecture
+                            = new Income(lectureIn.get(i).get(j).getLectureName(), lectureIn.get(i).get(j).getLectureMoney(), intToDate(lectureIn.get(i).get(j).getLectureDate()), studentIn.get(i));
+//                    System.out.println(studentInLecture);
+                    incomeList.add(studentInLecture);
+                }
+            }
+
+
+        }
+        for (Income income : incomeList) {
+            System.out.println("income = " + income.info());
+        }
+    }
+
+
+    private static LocalDate intToDate(int date) {
+
+        int integerDate = date;
+        int year = integerDate / 10000;
+        int month = (integerDate / 100) - year * 100;
+        int day = integerDate % 100;
+        LocalDate Date = LocalDate.of(year, month, day);
+
+        return Date;
+
+    }
+
+
+
+
 
 
     public void autoSave() {
@@ -177,5 +252,18 @@ public class FinacialRepository {
         }
     }
 
+
+    //                else{
+//                    listofstudent = new Income(lectureIn.get(i).get(i).getLectureName(), lectureIn.get(i).get(i).getLectureMoney(), intToDate(lectureIn.get(i).get(i).getLectureDate()), studentIn.get(i));
+//                       incomeList.add(listofstudent);
+//                }
+
+//
+//        }
+
+//        incomeList.add(listofstudent);
+//        for (Income income : incomeList) {
+//            System.out.println(income.info());
+//        }
 
 }
