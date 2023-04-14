@@ -1,6 +1,10 @@
 package choongang.student;
 
+import choongang.academy.AcademyRepository;
+import choongang.academy.LectureManagement;
 import choongang.utility.Util;
+
+import java.util.List;
 
 import static choongang.student.Gender.*;
 import static choongang.utility.Util.*;
@@ -9,9 +13,13 @@ import static choongang.utility.Util.*;
 public class StudentView {
 
     private static StudentRepository repo;
+    private static AcademyRepository aca;
+
+    private static LogonStudent logonStudent;
 
     static {
         repo = new StudentRepository();
+        aca = new AcademyRepository();
     }
 
     public void mainView() {
@@ -40,17 +48,20 @@ public class StudentView {
 
     public void login() {
         System.out.println("로그인 해주세요");
+        String inputId = null;
+        String inputPassword = null;
         // 아이디 검증
         while (true) {
-            String inputId = input("* ID: ");
+            inputId = input("* ID: ");
             Student student = repo.findStudentById(inputId);
+            System.out.println(student);
             if (student == null){
                 System.out.println("아이디가 존재하지 않습니다.");
                 continue;
             }
 
             // 이렇게하면 틀릴때 계속 아이디 부터 입력 시키는데 해결 방법이 있을까?
-            String inputPassword = input("* PASSWORD: ");
+            inputPassword = input("* PASSWORD: ");
 
             if (!student.getPassword().equals(inputPassword)) {
                 System.out.println("비밀번호가 틀렸습니다.");
@@ -58,7 +69,7 @@ public class StudentView {
             } // 자기 메소드 호출하는거로 확인해봐?
             break;
         }
-        userView();
+        userView(inputId);
     }
 //    public void checkPassword(String password) {
 //
@@ -69,19 +80,66 @@ public class StudentView {
 //
 //    }
 
-    public void userView() {
-        System.out.println("\n##### 중앙 정보 처리 학원 #####");
-        System.out.println("* 1. 마이페이지");
-        System.out.println("* 2. 정보 수정");
-        System.out.println("* 3. 수강 목록");
-        System.out.println("* 4. 수강 신청");
+    public void userView(String inputId) {
+        while (true) {
+            System.out.println("\n##### 중앙 정보 처리 학원 #####");
+            System.out.println("* 1. 마이페이지");
+            System.out.println("* 2. 정보 수정");
+            System.out.println("* 3. 수강 목록");
+            System.out.println("* 4. 수강 신청");
 //        if (!mr.isEmpty()) System.out.println("* 5. 회원 정보 삭제하기");
-        System.out.println("* 9. 프로그램 끝내기");
-        System.out.println("============================");
+            System.out.println("* 9. 로그아웃");
+            System.out.println("============================");
+            String menuNum = input(">> ");
+            switch (menuNum) {
+                case "1":
+                    myInfoView(inputId);
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    showMyLectures(inputId);
+                    break;
+                case "4":
+                    addLecture(inputId);
+                    break;
+                case "9":
+                    return;
+                default:
+                    System.out.println("잘못 입력하셨습니다.");
+            }
+        }
     }
+
+    private void myInfoView(String inputId) {
+
+    }
+
+    // 내가 수강중인 강의 목록 보여주기
+    private void showMyLectures(String inputId) {
+        Student studentById = repo.findStudentById(inputId);
+        studentById.myLectures();
+    }
+
+
+    // 강의 신청
+    private void addLecture(String inputId) {
+        List<LectureManagement> lec = aca.getLec();
+        for (int i = 0; i < lec.size(); i++) {
+            System.out.printf("* %d. %s\n",i+1, lec.get(i).lecInform());
+        }
+        System.out.println("==== 수강 하실 강의를 선택해주세요 ====");
+        int choiceLectureNum = Integer.parseInt(input(">> "));
+        LectureManagement lm = lec.get(choiceLectureNum - 1);
+
+        repo.addLecture(inputId, lm);
+
+    }
+
 
     public void signUp() {
         // 아이디, 이메일 등 중복 검사 부분 추가 해야됨
+        // 성별 입력도 해야됨 - 뺄까?
         System.out.println("\n##### 회원 가입 #####");
         String id = input("아이디 : ");
         String password = input("비밀번호 : ");

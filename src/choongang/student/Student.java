@@ -1,5 +1,8 @@
 package choongang.student;
 
+import choongang.academy.LectureManagement;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -16,11 +19,14 @@ public class Student {
     private int money; // 보유중인 돈
 
     // 강의 관련 내용 미사용 - 4.11.
-    List<Education> requestClass; // 강의 신청 목록
-    List<Education> acceptClass; // 수락 된 강의 목록
+    List<LectureManagement> requestClass; // 강의 신청 목록
+    List<LectureManagement> acceptClass; // 수락 된 강의 목록
     // 강의 신청 -> 학원쪽에서 수락
     // 수강료 납부 여부 -> 납부 완료 or 납부 하십시오
 
+
+    public Student() {
+    }
 
     public Student(String studentId, String password, String name, String email, String age, Gender gender, int money) {
         this.studentId = studentId;
@@ -30,6 +36,8 @@ public class Student {
         this.age = age;
         this.gender = gender;
         this.money = money;
+        this.requestClass = new ArrayList<>();
+        this.acceptClass = new ArrayList<>();
     }
 
     @Override
@@ -43,6 +51,20 @@ public class Student {
                 ", 성별 " + gender +
                 ", 머니: " + money +
                 ']';
+    }
+
+    public void myLectures() {
+        // String을 리턴해서 다 붙여? 말어?
+        System.out.println("#" + name + "님의 수강목록");
+        List<LectureManagement> LectureList = getRequestClass();
+        for (LectureManagement l : LectureList) {
+            System.out.println("- 강의명: " +l.getLectureName() + " - 강사명: " + l.getTeacherName());
+        }
+    }
+
+    public String myInfo() {
+        return "\n# 아이디: " + studentId + "\n# 이름: " + name + "\n# 이메일: " + email
+                + "\n# 나이: " + age + "\n# 성별: " + gender + "\n# 예치금: " + money;
     }
 
     @Override
@@ -112,5 +134,21 @@ public class Student {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public List<LectureManagement> getRequestClass() {
+        return requestClass;
+    }
+
+    public void setRequestClass(List<LectureManagement> requestClass) {
+        this.requestClass = requestClass;
+    }
+
+    public List<LectureManagement> getAcceptClass() {
+        return acceptClass;
+    }
+
+    public void setAcceptClass(List<LectureManagement> acceptClass) {
+        this.acceptClass = acceptClass;
     }
 }
