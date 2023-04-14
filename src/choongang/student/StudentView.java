@@ -1,10 +1,12 @@
 package choongang.student;
 
 import choongang.academy.AcademyRepository;
+import choongang.academy.AcademyView;
 import choongang.academy.LectureManagement;
 import choongang.utility.Util;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static choongang.student.Gender.*;
 import static choongang.utility.Util.*;
@@ -12,14 +14,17 @@ import static choongang.utility.Util.*;
 // 회원가입, 정보 입출력 처리
 public class StudentView {
 
-    private static StudentRepository repo;
+    private static StudentRepository repo; // 학생 저장소
     private static AcademyRepository aca;
+    private AcademyView academyView = new AcademyView();
+    private Student onStudent = null;
 
-    private static LogonStudent logonStudent;
+
 
     static {
         repo = new StudentRepository();
         aca = new AcademyRepository();
+
     }
 
     public void mainView() {
@@ -53,9 +58,9 @@ public class StudentView {
         // 아이디 검증
         while (true) {
             inputId = input("* ID: ");
-            Student student = repo.findStudentById(inputId);
-            System.out.println(student);
-            if (student == null){
+            onStudent = repo.findStudentById(inputId);
+            System.out.println(onStudent);
+            if (onStudent == null){
                 System.out.println("아이디가 존재하지 않습니다.");
                 continue;
             }
@@ -63,13 +68,18 @@ public class StudentView {
             // 이렇게하면 틀릴때 계속 아이디 부터 입력 시키는데 해결 방법이 있을까?
             inputPassword = input("* PASSWORD: ");
 
-            if (!student.getPassword().equals(inputPassword)) {
+            if (!onStudent.getPassword().equals(inputPassword)) {
                 System.out.println("비밀번호가 틀렸습니다.");
                 continue;
             } // 자기 메소드 호출하는거로 확인해봐?
             break;
         }
-        userView(inputId);
+
+        if (onStudent.getStudentId().equals(inputId)){
+            academyView.viewProcess();
+        } else {
+            userView(inputId);
+        }
     }
 //    public void checkPassword(String password) {
 //
@@ -83,8 +93,8 @@ public class StudentView {
     public void userView(String inputId) {
         while (true) {
             System.out.println("\n##### 중앙 정보 처리 학원 #####");
-            System.out.println("* 1. 마이페이지");
-            System.out.println("* 2. 정보 수정");
+            System.out.println("* 1. 내 정보 보기");
+            System.out.println("* 2. 비밀번호 변경");
             System.out.println("* 3. 수강 목록");
             System.out.println("* 4. 수강 신청");
 //        if (!mr.isEmpty()) System.out.println("* 5. 회원 정보 삭제하기");
@@ -96,6 +106,7 @@ public class StudentView {
                     myInfoView(inputId);
                     break;
                 case "2":
+                    changePassword();
                     break;
                 case "3":
                     showMyLectures(inputId);
@@ -111,8 +122,26 @@ public class StudentView {
         }
     }
 
-    private void myInfoView(String inputId) {
+    private void changePassword() {
+        while (true) {
+            System.out.println("# 비밀번호 재확인");
+            String checkPassword = input(">> ");
+            if (!onStudent.getPassword().equals(checkPassword)) {
+                System.out.println("비밀번호가 다릅니다.");
+                continue;
+            }
+            break;
+        }
+        System.out.println("# 변경할 비밀번호를 입력해주세요");
+        String newPassword = input(">> ");
+        onStudent.setPassword(newPassword);
+        System.out.println("비밀번호가 변경되었습니다");
 
+    }
+
+    // 내 정보 확인 -> id, 이름, 이메일, 나이, 성별, 돈 보여주기
+    private void myInfoView(String inputId) {
+        System.out.println(onStudent.myInfo());
     }
 
     // 내가 수강중인 강의 목록 보여주기
@@ -141,15 +170,57 @@ public class StudentView {
         // 아이디, 이메일 등 중복 검사 부분 추가 해야됨
         // 성별 입력도 해야됨 - 뺄까?
         System.out.println("\n##### 회원 가입 #####");
-        String id = input("아이디 : ");
+        String id = null;
+        while (true) {
+            id = input("아이디 : ");
+            List<Student> studentList = repo.getStudentList();
+            List<String> studentIdList = studentList.stream()
+                    .map(student -> student.getStudentId())
+                    .collect(Collectors.toList());
+            if (studentIdList.contains(id)) {
+                System.out.println("이미 존재하는 ID입니다.");
+                continue;
+            }
+            break;
+        }
         String password = input("비밀번호 : ");
         String name = input("이름 : ");
-        String email = input("이메일 : ");
+        String email;
+        while (true) {
+            email = input("이메일 : ");
+            List<Student> studentList = repo.getStudentList();
+            List<String> studentIdList = studentList.stream()
+                    .map(student -> student.getEmail())
+                    .collect(Collectors.toList());
+            if (studentIdList.contains(email)) {
+                System.out.println("이미 존재하는 email입니다.");
+                continue;
+            }
+            break;
+        }
         String age = input("나이 : ");
-        String gender = input("성별 : ");
+        Gender gender;
+
+        String inputGender = null;
+        checkGender:while (true) {
+            inputGender = input("성별(M/F) : ");
+            switch (inputGender.toLowerCase().charAt(0)) {
+                case 'm':
+                case 'M':
+                     gender = MALE;
+                     break checkGender;
+                case 'y':
+                case 'Y':
+                    gender = FEMALE;
+                    break checkGender;
+                default:
+                    System.out.println("성별을 정확히 입력해주세요");
+            }
+        }
+
 
         Student newStudent = new Student(id, password, name, email, age,
-                gender.equals(MALE) ? MALE : FEMALE, 100000);
+                gender, 1000000);
         if (repo.registerStudent(newStudent)) {
             System.out.println("회원가입이 완료 되었습니다.");
             mainView();
