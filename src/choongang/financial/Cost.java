@@ -75,7 +75,20 @@ public class Cost {
     }
     public String info() {
 
-        return String.format("%8s    %,-8d    %s    %s",costTitle,cost,costDate,costMemo);
+        return String.format("%8s    %,-8d    %s    %s",costTitle(),cost,costDate,costMemo);
 
+    }
+
+    public String costTitle() {
+        //문자열 글자수 얻기 length()
+        int length = this.costTitle.length();
+        String prettier;
+        if(length > 7 ) {
+            //문자열 슬라이스 substring() 사용
+            prettier = this.costTitle.substring(0,7) + "...";
+        }else {
+            prettier = this.costTitle;
+        }
+        return String.format("%s",prettier);
     }
 }

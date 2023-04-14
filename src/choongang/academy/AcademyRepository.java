@@ -8,8 +8,12 @@ import choongang.student.StudentRepository;
 
 import java.util.ArrayList;
 
+import java.util.Collections;
+
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static choongang.utility.Util.input;
 
 public class AcademyRepository {
 
@@ -17,6 +21,7 @@ public class AcademyRepository {
     public static List<LectureManagement> lectureList;
     private static StudentRepository sr;
     private static Student st;
+    private static AcademyView av;
 
 
     static {
@@ -47,6 +52,8 @@ public class AcademyRepository {
                 ));
         sr = new StudentRepository();
         st = new Student();
+        av = new AcademyView();
+
     }
 
     /**
@@ -87,32 +94,65 @@ public class AcademyRepository {
                     .forEach(d -> System.out.println(d));
         }
 
-        /**
-         * 강의별 수강생 리스트
-         * */
-        public void lectureByStudentList () {
+
+    /**
+     * 강의별 수강생 리스트
+     */
+    public void lectureByStudentList() {
+
 
         }
 
-        /**
-         * 강의 개설하기
-         * 개설한 강의는 강의배열에 추가
-         */
-        public void addNewLecture (LectureManagement newLecture){
-            lectureList.add(newLecture);
+    /**
+     * 강의 개설하기
+     * 개설한 강의는 강의배열에 추가
+     */
+    public void addNewLecture(LectureManagement newLecture) {
+        lectureList.add(newLecture);
+    }
+
+    /**
+     * 강의 삭제하기
+     */
+    public void deleteLecture(String targetLecKeyword) {
+        for (int i = 0; i < lectureList.size(); i++) {
+            if (lectureList.get(i).getLectureName().contains(targetLecKeyword)) {
+                lectureList.remove(i);
+            }
         }
+    }
 
-        /**
-         * 수강신청 강의 리스트
-         */
-        public void requestLecList () {
-            List<LectureManagement> requestClass = st.getRequestClass();
-            System.out.println("requestClass = " + requestClass);
+    /**
+     * 강의 키워드 검색하기
+     */
+    public static List<LectureManagement> searchByLecName(String targetLecKeyword) {
+        return lectureList.stream()
+                .filter(d -> d.getLectureName().contains(targetLecKeyword))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * 강의 내용 수정하기
+     * */
 
 
-            /**
-             * 강의별 수강생 리스트
-             * */
+
+
+    /**
+     * 수강신청 강의 리스트
+     */
+    public void requestLecList() {
+        List<LectureManagement> requestClass = st.getRequestClass();
+        System.out.println("requestClass = " + requestClass);
+    }
+
+    /**
+     * 학생관리영역에서 사용할 강의리스트
+     */
+    public List<LectureManagement> getLec() {
+        return lectureList;
+    }
+}
 
 
         }

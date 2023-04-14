@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import static choongang.student.Gender.*;
 import static choongang.utility.Util.*;
+import static java.util.stream.Collectors.toList;
 
 // 회원가입, 정보 입출력 처리
 public class StudentView {
@@ -17,7 +18,7 @@ public class StudentView {
     private static StudentRepository repo; // 학생 저장소
     private static AcademyRepository aca;
     private AcademyView academyView = new AcademyView();
-    private Student onStudent = null;
+    public static Student onStudent = null;
 
 
 
@@ -76,6 +77,14 @@ public class StudentView {
         }
 
         if (onStudent.getStudentId().equals("admin")){
+
+            List<Student> studentList = StudentRepository.getStudentList();
+            // 수강하는 강의 목록들 가져오기
+            List<LectureManagement> allLecture = studentList.stream()
+                    .flatMap(lec -> lec.getRequestClass().stream()).collect(toList());
+            int sum = allLecture.stream().mapToInt(n -> n.getLectureMoney()).sum();
+            onStudent.setMoney(sum);
+
             academyView.viewProcess();
         } else {
             userView(inputId);

@@ -1,0 +1,99 @@
+Index: src/choongang/academy/AcademyView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package choongang.academy;\r\n\r\nimport choongang.financial.FinacialRepository;\r\nimport choongang.financial.FinancialView;\r\nimport choongang.student.Student;\r\nimport choongang.student.StudentRepository;\r\nimport choongang.utility.Util;\r\n\r\nimport java.util.List;\r\nimport java.util.Scanner;\r\n\r\nimport static choongang.utility.Util.input;\r\n\r\npublic class AcademyView {\r\n\r\n    private static AcademyRepository ar;\r\n    private static FinancialView fv;\r\n\r\n    static {\r\n        ar = new AcademyRepository();\r\n        fv = new FinancialView();\r\n    }\r\n\r\n    public void managementMenu() {\r\n        System.out.println(\"\\n:¨·.·¨:\\n\" +\r\n                \" `·. \\uD83D\\uDC97\\uD83D\\uDC9B\\uD83D\\uDC99무지개 관리자 시스템 ##### ★°*ﾟ\");\r\n        System.out.println(\"☞ 1. 학생 조회\");\r\n        System.out.println(\"☞ 2. 강의 조회\");\r\n        System.out.println(\"☞ 3. 강의 개설\");\r\n        System.out.println(\"☞ 4. 회계 관리\");\r\n        System.out.println(\"☞ 0. 종료하기\");\r\n        System.out.println(\"=====================================\");\r\n    }\r\n\r\n    public void viewProcess() {\r\n        while (true) {\r\n            managementMenu();\r\n            String menuNum = input(\"▶▶ \");\r\n\r\n            switch (menuNum) {\r\n                case \"1\":\r\n                    // 1. 학생 조회\r\n                    ar.showStudent();\r\n                    break;\r\n                case \"2\":\r\n                    // 2. 강의 조회\r\n                    searchLecList();\r\n                    break;\r\n                case \"3\":\r\n                    // 3. 강의 개설\r\n                    addNewLec();\r\n                    break;\r\n                case \"4\":\r\n                    // 4. 회계 관리\r\n                    fv.FinancialStart();\r\n                    break;\r\n                case \"0\":\r\n                    String answer = input(\"# 관리자 페이지 종료 [y/n] : \");\r\n                    if (answer.toLowerCase().charAt(0) == 'y') {\r\n                        System.out.println(\"# (´･_･)프로그램을 종료합니다.\");\r\n                        System.exit(0);\r\n                    } else {\r\n                        continue;\r\n                    }\r\n                    break;\r\n                default:\r\n                    System.out.println(\"\\n# 메뉴 번호를 다시 입력하세요\");\r\n            }\r\n        }\r\n    }\r\n// =========================================================================\r\n\r\n    // 2. 강의조회\r\n    public void searchLecList() {\r\n        System.out.println(\"\\n##### [중앙정보] 강의 조회 #####\");\r\n        System.out.println(\"☞ 1. 강의 전체 조회\");\r\n        System.out.println(\"☞ 2. 강의 검색하기\");\r\n        System.out.println(\"☞ 0. 이전페이지로\");\r\n        System.out.println(\"=============================\");\r\n\r\n        String menuNum = input(\"▶▶ \");\r\n        switch (menuNum) {\r\n            case \"1\":\r\n                //1. 강의 전체 조회\r\n                ar.getLectureList();\r\n                break;\r\n            case \"2\":\r\n                //2. 강의 검색하기\r\n                String keyword = input(\" ＃ 강의명 or 강사명을 입력해주세요!\\n▶▶ \");\r\n                ar.searchList(keyword);\r\n                break;\r\n            case \"0\":\r\n                return;\r\n            default:\r\n                System.out.println(\"(´･_･)다시 입력해주세요\\n\");\r\n\r\n        }\r\n    }\r\n\r\n    // =========================================================\r\n    // 3. 강의 개설\r\n    public void addNewLec() {\r\n        System.out.println(\"\\n##### [중앙정보] 강의 개설 #####\");\r\n        String lecName = input(\"☞ 강의명 : \");\r\n        String teacherName = input(\"☞ 강사명 : \");\r\n        int lectureDate = Integer.parseInt(input(\"☞ 개강일(8자리) : \"));\r\n        int lectureFee = Integer.parseInt(input(\"☞ 수강료 : \"));\r\n        int countStudent = Integer.parseInt(input(\"☞ 수강정원 : \"));\r\n\r\n        LectureManagement newLecture =\r\n                new LectureManagement(lecName, teacherName, lectureDate, lectureFee, countStudent);\r\n        ar.addNewLecture(newLecture);\r\n        System.out.println(\" # 신규 강의가 개설되었습니다.\");\r\n        System.out.println(\"-------------------------------------------\");\r\n        ar.getLectureList();\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n
+===================================================================
+diff --git a/src/choongang/academy/AcademyView.java b/src/choongang/academy/AcademyView.java
+--- a/src/choongang/academy/AcademyView.java	
++++ b/src/choongang/academy/AcademyView.java	
+@@ -26,7 +26,7 @@
+                 " `·. \uD83D\uDC97\uD83D\uDC9B\uD83D\uDC99무지개 관리자 시스템 ##### ★°*ﾟ");
+         System.out.println("☞ 1. 학생 조회");
+         System.out.println("☞ 2. 강의 조회");
+-        System.out.println("☞ 3. 강의 개설");
++        System.out.println("☞ 3. 강의 관리");
+         System.out.println("☞ 4. 회계 관리");
+         System.out.println("☞ 0. 종료하기");
+         System.out.println("=====================================");
+@@ -47,8 +47,8 @@
+                     searchLecList();
+                     break;
+                 case "3":
+-                    // 3. 강의 개설
+-                    addNewLec();
++                    // 3. 강의 관리
++                    manageLecture();
+                     break;
+                 case "4":
+                     // 4. 회계 관리
+@@ -98,7 +98,39 @@
+     }
+ 
+     // =========================================================
+-    // 3. 강의 개설
++    // 3. 강의 관리
++    public void manageLecture() {
++        System.out.println("\n##### [중앙정보] 강의 관리 #####");
++        System.out.println("☞ 1. 신규 강의 개설");
++        System.out.println("☞ 2. 기존 강의 삭제");
++        System.out.println("☞ 3. 강의 내용 수정");
++        System.out.println("☞ 0. 이전페이지로");
++        System.out.println("=============================");
++
++        String menuNum = input("▶▶ ");
++        switch (menuNum) {
++            case "1":
++                //1. 신규 강의 개설
++                addNewLec();
++                break;
++            case "2":
++                //2. 기존 강의 삭제
++                delLecture();
++                break;
++            case "3":
++                //3. 강의 내용 수정
++                String keyword = input(" ＃ 강의명 or 강사명을 입력해주세요!\n▶▶ ");
++                ar.searchList(keyword);
++                break;
++            case "0":
++                return;
++            default:
++                System.out.println("(´･_･)다시 입력해주세요\n");
++
++        }
++    }
++
++    // 3-1. 신규 강의 개설
+     public void addNewLec() {
+         System.out.println("\n##### [중앙정보] 강의 개설 #####");
+         String lecName = input("☞ 강의명 : ");
+@@ -114,6 +146,29 @@
+         System.out.println("-------------------------------------------");
+         ar.getLectureList();
+     }
++
++    // 3-2. 기존 강의 삭제
++    public void delLecture() {
++        String targetLecKeyword = input(" ＃ 삭제할 강의명의 키워드를 입력하세요. \n▶▶ ");
++        LectureManagement searchLecKeyword = ar.searchByLecName(targetLecKeyword);
++        if(searchLecKeyword != null) {
++            String menuNum = input(String.format("[%s] 강의를 정말 삭제할까요? [y/n] : ",
++            searchLecKeyword.getLectureName()));
++            switch (menuNum.toLowerCase().charAt(0)) {
++                case 'y':
++                case 'ㅛ':
++                    ar.deleteLecture(targetLecKeyword);
++                    System.out.println("\n # 강의가 삭제되었습니다!");
++                    break;
++                default:
++                    System.out.println("\n # 이전 페이지로...");
++            }
++        }else
++            System.out.println("\n 키워드를 다시 입력해주세요.");
++
++
++        }
++
+ }
+ 
+ 
