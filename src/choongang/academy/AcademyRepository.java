@@ -1,13 +1,17 @@
 package choongang.academy;
 
+
+import java.util.Arrays;
+
 import choongang.student.Student;
 import choongang.student.StudentRepository;
 
 import java.util.ArrayList;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AcademyRepository {
+
 
     public static List<LectureManagement> lectureList;
     private static StudentRepository sr;
@@ -59,15 +63,17 @@ public class AcademyRepository {
     /**
      * 강의 전체조회
      */
+
     public void getLectureList() {
         System.out.printf("========== 개설된 강의현황 (총 %d개) =========\n"
                 , lectureList.size());
+
         System.out.println("※ 강의명  |  강사명  |  개강일  |  수강료  | 수강정원 ※");
 
         for (LectureManagement lm : lectureList) {
             System.out.println(lm.lecInform());
         }
-    }
+
 
     /**
      * 강의 선택조회
@@ -102,12 +108,16 @@ public class AcademyRepository {
         List<LectureManagement> requestClass = st.getRequestClass();
         System.out.println("requestClass = " + requestClass);
 
-    }
+
+        /**
+         * 강의별 수강생 리스트
+         * */
 
     public List<LectureManagement> getLec() {
         return lectureList;
     }
-}
 
+}
+// 새 강의 개설
 
 
