@@ -28,7 +28,7 @@ public class StudentView {
 
     }
 
-    public void mainView() {
+    public void mainView()  {
 
         while (true) {
             System.out.println("\n##### 중앙 정보 처리 학원 #####");
@@ -77,12 +77,14 @@ public class StudentView {
         }
 
         if (onStudent.getStudentId().equals("admin")){
+
             List<Student> studentList = StudentRepository.getStudentList();
             // 수강하는 강의 목록들 가져오기
             List<LectureManagement> allLecture = studentList.stream()
                     .flatMap(lec -> lec.getRequestClass().stream()).collect(toList());
             int sum = allLecture.stream().mapToInt(n -> n.getLectureMoney()).sum();
             onStudent.setMoney(sum);
+
             academyView.viewProcess();
         } else {
             userView(inputId);
@@ -105,6 +107,7 @@ public class StudentView {
             System.out.println("* 3. 수강 목록");
             System.out.println("* 4. 수강 신청");
 //        if (!mr.isEmpty()) System.out.println("* 5. 회원 정보 삭제하기");
+            System.out.println("* 5. 충전하기");
             System.out.println("* 9. 로그아웃");
             System.out.println("============================");
             String menuNum = input(">> ");
@@ -121,10 +124,27 @@ public class StudentView {
                 case "4":
                     addLecture(inputId);
                     break;
+                case "5":
+                    chargeMoney();
+                    break;
                 case "9":
                     return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
+            }
+        }
+    }
+
+    private void chargeMoney() {
+        while (true) {
+            System.out.println("충전할 금액을 입력해주세요(최대 50만원)");
+            int inputCash = Integer.parseInt(input(">> "));
+            if (inputCash<= 500000 ) {
+                onStudent.setMoney(onStudent.getMoney()+inputCash);
+                System.out.println("충전이 완료 되었습니다 현재 보유 금액 : " + onStudent.getMoney());
+                break;
+            } else {
+                System.out.println("금액을 정확히 입력해주세요");
             }
         }
     }
@@ -168,12 +188,29 @@ public class StudentView {
         int choiceLectureNum = Integer.parseInt(input(">> "));
         LectureManagement lm = lec.get(choiceLectureNum - 1);
 
+
+//        int i = onStudent.getRequestClass().indexOf(lm);
+//        System.out.println(onStudent.getRequestClass().get(0) +" ㅁㅁㅁ"+ i);
+//        if (lm.getLectureName().equals(onStudent.getRequestClass().get(i).getLectureName())) {
+//            System.out.println("중복된 강의 입니다.");
+//            return;
+//        }
+
+//        System.out.println(lm.getLectureMoney());
+//        System.out.println(onStudent.getMoney());
+        if (onStudent.getMoney() - lm.getLectureMoney() < 0) {
+            System.out.println("금액이 부족합니다. 금액을 충전해주세요");
+            return;
+        }
+
+        onStudent.setMoney(onStudent.getMoney() - lm.getLectureMoney());
         repo.addLecture(inputId, lm);
+        System.out.println("강의 신청이 완료 되었습니다.");
 
     }
 
 
-    public void signUp() {
+    public void signUp()  {
         // 아이디, 이메일 등 중복 검사 부분 추가 해야됨
         // 성별 입력도 해야됨 - 뺄까?
         System.out.println("\n##### 회원 가입 #####");
@@ -234,7 +271,7 @@ public class StudentView {
         }
     }
 
-    public void start() {
+    public void start()  {
         mainView();
     }
 }

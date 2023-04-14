@@ -8,8 +8,13 @@ public class Main {
 //
 //        System.out.println("b = " + b);
 
-        StudentView studentView = new StudentView();
-        studentView.start();
+//        try {
+            StudentView studentView = new StudentView();
+            studentView.start();
+//
+//        }catch (Exception e) {
+//            System.out.println("다시 확인해주세요");
+//        }
 
     }
 }
