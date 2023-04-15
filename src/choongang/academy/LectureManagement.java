@@ -94,6 +94,10 @@ public class LectureManagement {
     }
 
     public String lecInform() {
+
+
+
+
         return String.format("# %s | %s | %d | %d원 | %d명 "
                 , this.lectureName, this.teacherName, this.lectureDate
                 , this.lectureFee, this.countStudent

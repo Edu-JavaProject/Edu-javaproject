@@ -2,10 +2,13 @@ package choongang.student;
 
 import choongang.academy.LectureManagement;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+
+import static choongang.student.Gender.*;
 
 // 학생 객체
 public class Student {
@@ -74,8 +77,10 @@ public class Student {
     }
 
     public String myInfo() {
+        DecimalFormat df = new DecimalFormat("##,###");
+
         return "\n# 아이디: " + studentId + "\n# 이름: " + name + "\n# 이메일: " + email
-                + "\n# 나이: " + age + "\n# 성별: " + gender + "\n# 예치금: " + money;
+                + "\n# 나이: " + age + "\n# 성별: " + (gender == MALE ? "남" : "여") + "\n# 잔액: " + df.format(money) +"원";
     }
 
     @Override

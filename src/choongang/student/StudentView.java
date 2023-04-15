@@ -90,14 +90,7 @@ public class StudentView {
             userView(inputId);
         }
     }
-//    public void checkPassword(String password) {
-//
-//        if (!student.getPassword().equals(password)) {
-//            System.out.println("비밀번호가 틀렸습니다.");
-//            continue;
-//        } // 자기 메소드 호출하는거로 확인해봐?
-//
-//    }
+
 
     public void userView(String inputId) {
         while (true) {
@@ -186,18 +179,21 @@ public class StudentView {
         }
         System.out.println("==== 수강 하실 강의를 선택해주세요 ====");
         int choiceLectureNum = Integer.parseInt(input(">> "));
+        if (choiceLectureNum > lec.size()) {
+            System.out.println("올바른 강의의 번호를 입력해주세요");
+            return;
+        }
         LectureManagement lm = lec.get(choiceLectureNum - 1);
 
 
-//        int i = onStudent.getRequestClass().indexOf(lm);
-//        System.out.println(onStudent.getRequestClass().get(0) +" ㅁㅁㅁ"+ i);
-//        if (lm.getLectureName().equals(onStudent.getRequestClass().get(i).getLectureName())) {
-//            System.out.println("중복된 강의 입니다.");
-//            return;
-//        }
+        int i = onStudent.getRequestClass().indexOf(lm);
+        if ( i != -1) {
+            if (onStudent.getRequestClass().get(i).getLectureName().equals(lm.getLectureName())) {
+                System.out.println("이미 신청하신 강의입니다.");
+                return;
+            }
+        }
 
-//        System.out.println(lm.getLectureMoney());
-//        System.out.println(onStudent.getMoney());
         if (onStudent.getMoney() - lm.getLectureMoney() < 0) {
             System.out.println("금액이 부족합니다. 금액을 충전해주세요");
             return;
@@ -264,7 +260,7 @@ public class StudentView {
 
 
         Student newStudent = new Student(id, password, name, email, age,
-                gender, 1000000);
+                gender, 0);
         if (repo.registerStudent(newStudent)) {
             System.out.println("회원가입이 완료 되었습니다.");
             mainView();
