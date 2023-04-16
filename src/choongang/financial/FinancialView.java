@@ -12,11 +12,12 @@ import static choongang.utility.Util.*;
 
 
 public class FinancialView {
-public StudentView stview;
+    static StudentView stview;
     static FinacialRepository fr;
 
     static {
         fr = new FinacialRepository();
+        stview =new StudentView();
     }
 
     // 보여질 화면
@@ -40,6 +41,7 @@ public StudentView stview;
 
             switch (selNum) {
                 case "1":
+
                     addList();
                     stop();
                     break;
@@ -72,29 +74,50 @@ public StudentView stview;
 
     // 지출 수입 내역 수기로 작성을 위한 페이지 입니다.
     private static void addList() {
-        System.out.println("\n####### \uD83C\uDF40 지출/수입 등록 \uD83C\uDF40 #######");
-        System.out.println("1. 비용 2. 수입 ");
-        System.out.println("======================================");
-        String selNum = input("\uD83C\uDF20 번호를 입력해주세요 ▶▶ ");
-        switch (selNum) {
-            //지출 내역 직접 작성해서 costlist에 추가합니다
-            case "1":
-                String costTitle = input("* 지출내역 :");
-                int cost = Integer.parseInt(input("* 금액 : "));
-                String datecost = input("* 날짜(yyyymmdd) : ");
-                String costMemo = input("* 비고 : ");
-                fr.addCost(costTitle, cost, stringToDate(datecost), costMemo);
-                break;
 
-            //수입내역 직접 작성해서 incomelist에 추가합니다.
-            case "2":
-                String incomeTitle = input("* 수입내역 :");
-                int income = Integer.parseInt(input("* 금액 : "));
-                String dateincome = (input("* 날짜(yyyymmdd) : "));
-                String incomeMemo = input("* 비고 : ");
-                int addSum = 10000000 +fr.addIncome(incomeTitle, income, stringToDate(dateincome), incomeMemo);
-                System.out.printf("* 이번달 총 수입 : %,d\n",addSum);
-                break;
+        while (true) {
+            System.out.println("###내역등록###");
+            System.out.println("1. 비용 2. 수입 3.이전 페이지로 돌아가기 ");
+            String selNum = input("번호를 입력해주세요 >>");
+            switch (selNum) {
+                //지출 내역 직접 작성해서 costlist에 추가합니다
+                case "1":
+                    String costTitle = input("지출내역 :");
+
+                    try {
+                        int cost = Integer.parseInt(input("금액 : "));
+                        String datecost = input("날짜(yyyymmdd) : ");
+                        String costMemo = input("비고 : ");
+                        fr.addCost(costTitle, cost, stringToDate(datecost), costMemo);
+                        return;
+                    } catch (NumberFormatException e) {
+                        System.out.println("숫자를 입력해주세요");
+                        break;
+                    }
+
+
+                //수입내역 직접 작성해서 totalIncome을 구합니다.
+                case "2":
+
+                    String incomeTitle = input("수입내역 :");
+                    try {
+                        int income = Integer.parseInt(input("금액 : "));
+                        String dateincome = (input("날짜(yyyymmdd) : "));
+                        String incomeMemo = input("비고 : ");
+                        int addSum = 10000000 + fr.addIncome(incomeTitle, income, stringToDate(dateincome), incomeMemo);
+                        System.out.printf("이번달 총 수입 : %,d\n", addSum);
+                        return;
+                    } catch (NumberFormatException e) {
+                        System.out.println("숫자를 입력해주세요 ");
+                        break;
+                    }
+
+                case "3":
+                    return;
+                default:
+                    System.out.println("해당하는 숫자를 입력해주세요");
+            }
+
         }
     }
 
