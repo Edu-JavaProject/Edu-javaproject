@@ -1,14 +1,10 @@
 package choongang.academy;
 
 
-import java.util.Arrays;
-
 import choongang.student.Student;
 import choongang.student.StudentRepository;
 
 import java.util.ArrayList;
-
-import java.util.Collections;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -71,7 +67,6 @@ public class AcademyRepository {
     /**
      * 강의 전체조회
      */
-
     public void getLectureList() {
         System.out.printf("========== 개설된 강의현황 (총 %d개) =========\n"
                 , lectureList.size());
@@ -83,12 +78,10 @@ public class AcademyRepository {
                         .stream().map(n -> n.getLectureName())).collect(Collectors.toList());
 
         for (LectureManagement lm : lectureList) {
-//
             long count = allLecList.stream().filter(target -> target.equals(lm.getLectureName())).count();
             lm.setCountStudent((int) count);
             System.out.println(lm.lecInform());
         }
-
     }
 
     /**
@@ -100,15 +93,6 @@ public class AcademyRepository {
                         d.getTeacherName().contains(keyword))
                 .collect(Collectors.toList())
                 .forEach(d -> System.out.println(d));
-    }
-
-
-    /**
-     * 강의별 수강생 리스트
-     */
-    public void lectureByStudentList() {
-
-
     }
 
     /**
@@ -141,7 +125,22 @@ public class AcademyRepository {
 
     /**
      * 강의 내용 수정하기
-     * */
+     */
+    public void modifyLecName(LectureManagement lm) {
+        while (true) {
+            System.out.println("\n\uD83C\uDF20 변경할 강사이름");
+            String checkTeacher = input("▶▶ ");
+            if (lm.getTeacherName().equals(checkTeacher)) {
+                lm.setTeacherName(checkTeacher);
+                System.out.println("\uD83D\uDEA8 기존의 강사명과 같습니다. 다시 입력해주세요.");
+                continue;
+            } else {
+                lm.setTeacherName(checkTeacher);
+                System.out.println("\n\uD83C\uDF20 강사가 변경되었습니다!");
+                break;
+            }
+        }
+    }
 
 
     /**
@@ -153,14 +152,15 @@ public class AcademyRepository {
     }
 
     /**
-     * 학생관리영역에서 사용할 강의리스트
+     * 외부 패키지 사용할 강의리스트
      */
     public List<LectureManagement> getLec() {
         return lectureList;
     }
 
-    public static List<LectureManagement> lecturListForPayroll(){
+    public static List<LectureManagement> lecturListForPayroll() {
         return lectureList;
     }
+
 }
 
