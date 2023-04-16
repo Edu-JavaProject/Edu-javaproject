@@ -76,9 +76,16 @@ public class AcademyRepository {
         System.out.printf("========== 개설된 강의현황 (총 %d개) =========\n"
                 , lectureList.size());
 
-        System.out.println("※ 강의명  |  강사명  |  개강일  |  수강료  | 수강정원 ※");
+        System.out.println("※ 강의명  |  강사명  |  개강일  |  수강료  | 수강인원 ※");
+
+        List<String> allLecList = StudentRepository.getStudentList().stream()
+                .flatMap(st -> st.getRequestClass()
+                        .stream().map(n -> n.getLectureName())).collect(Collectors.toList());
 
         for (LectureManagement lm : lectureList) {
+//
+            long count = allLecList.stream().filter(target -> target.equals(lm.getLectureName())).count();
+            lm.setCountStudent((int) count);
             System.out.println(lm.lecInform());
         }
 
