@@ -22,6 +22,20 @@ public class StudentRepository {
 
         studentList = new ArrayList<>(
                 List.of(
+                        // 관리자 계정
+                        new Student("admin", "admin", "관리자", "admin@gmail.com", "00", MALE, 0),
+
+                        // 일반 회원
+                        new Student("hong", "1234", "홍길동", "abc@gmail.com", "22", MALE, 1000000,
+                                new ArrayList<>(List.of(ar.getLec().get(0), ar.getLec().get(5), ar.getLec().get(7), ar.getLec().get(4)))),
+                        new Student("superman", "1234", "슈퍼맨", "super@gmail.com", "44", MALE, 1000000,
+                                new ArrayList<>(List.of(ar.getLec().get(0), ar.getLec().get(1), ar.getLec().get(2), ar.getLec().get(3)))),
+                        new Student("origin", "1234", "원본", "onebon@gmail.com", "33", FEMALE, 1000000,
+                                new ArrayList<>(List.of(ar.getLec().get(0), ar.getLec().get(8), ar.getLec().get(9), ar.getLec().get(7)))),
+                        new Student("parking", "1234", "주차왕", "park@gmail.com", "20", FEMALE, 1000000,
+                                new ArrayList<>(List.of(ar.getLec().get(10), ar.getLec().get(5), ar.getLec().get(7), ar.getLec().get(8)))),
+                        new Student("kimssi", "1234", "김씨", "kim@gmail.com", "44", MALE, 1000000,
+                                new ArrayList<>(List.of(ar.getLec().get(0), ar.getLec().get(5), ar.getLec().get(10), ar.getLec().get(9)))),
                         new Student("hong", "1234", "홍길동", "abc@gmail.com", "22", MALE, 1000000,
                                 new ArrayList<>(List.of(ar.getLec().get(0), ar.getLec().get(5), ar.getLec().get(7), ar.getLec().get(4)))),
                         new Student("daly", "1111", "달리", "bbc@bbc.com", "23", FEMALE, 1000000,
@@ -31,8 +45,7 @@ public class StudentRepository {
                         new Student("mike", "godmike", "마이크", "mikegod@gmail.com", "27", MALE, 1000000,
                                 new ArrayList<>(List.of(ar.getLec().get(1), ar.getLec().get(2), ar.getLec().get(10)))),
                         new Student("enom33", "class", "이놈", "nom3@gmail.com", "25", MALE, 1000000,
-                                new ArrayList<>(List.of(ar.getLec().get(1) ))),
-                        new Student("admin", "admin", "관리자", "admin@gmail.com", "00", MALE, 0)
+                                new ArrayList<>(List.of(ar.getLec().get(1) )))
                 )
         );
             }

@@ -155,7 +155,9 @@ public class AcademyView {
         String targetLecKeyword = input("\uD83C\uDF20 삭제할 강의명의 키워드를 입력하세요. \n▶▶ ");
         List<LectureManagement> searchLecKeyword = ar.searchByLecName(targetLecKeyword);
 
+
         if (searchLecKeyword != null) {
+//            System.out.println(searchLecKeyword.get(0).getCountStudent());
             if (searchLecKeyword.size() == 1) {
                 String menuNum = input(String.format("\n\uD83C\uDF20 [ %s ] 강의를 정말 삭제할까요? [y/n] : ",
                         searchLecKeyword.get(0).getLectureName()));
