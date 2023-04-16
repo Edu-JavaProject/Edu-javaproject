@@ -57,9 +57,10 @@ public class AcademyRepository {
      */
     public void showStudent() {
         System.out.printf("========= 우리학원 학생현황 (총 %d명) ========\n"
-                , sr.getStudentList().size());
+                , sr.getStudentList().size()-1);
         List<Student> studentList = sr.getStudentList();
         for (Student student : studentList) {
+            if ( student.getStudentId().equals("admin")) continue;
             System.out.println("학생정보 " + student);
         }
     }
