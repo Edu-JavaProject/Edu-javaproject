@@ -85,11 +85,11 @@ public class LectureManagement {
     @Override
     public String toString() {
         return "· 강의현황 [ " +
-                "강의명='" + lectureName + '\'' +
-                ", 강사명='" + teacherName + '\'' +
-                ", 개강일=" + lectureDate +
-                ", 수강료=" + lectureFee + "원" +
-                ", 수강정원=" + countStudent + "명" +
+                "강의명 : '" + lectureName + '\'' +
+                ", 강사명 : '" + teacherName + '\'' +
+                ", 개강일 : " + lectureDate +
+                ", 수강료 : " + lectureFee + "원" +
+                ", 수강인원 : " + countStudent + "명" +
                 " ]";
     }
 
