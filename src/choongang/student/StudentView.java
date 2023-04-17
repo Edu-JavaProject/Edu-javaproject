@@ -100,7 +100,6 @@ public class StudentView {
             System.out.println("☞ 2. 비밀번호 변경");
             System.out.println("☞ 3. 수강 목록");
             System.out.println("☞ 4. 수강 신청");
-//        if (!mr.isEmpty()) System.out.println("* 5. 회원 정보 삭제하기");
             System.out.println("☞ 5. 충전하기");
             System.out.println("☞ 9. 로그아웃");
             System.out.println("===============================");

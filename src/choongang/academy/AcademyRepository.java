@@ -24,27 +24,27 @@ public class AcademyRepository {
         lectureList = new ArrayList<>(
                 List.of(
                         new searchLecList("JAVA 입문", "김기범",
-                                20230403, 210810, 30),
+                                20230403, 210810, 0),
                         new searchLecList("C언어 입문", "전현무",
-                                20230408, 320000, 25),
+                                20230408, 320000, 0),
                         new searchLecList("Android APP", "장보고",
-                                20230408, 320000, 15),
+                                20230408, 320000, 0),
                         new searchLecList("인공지능 이해, 챗봇만들기", "박나래",
-                                20230415, 600000, 10),
+                                20230415, 600000, 0),
                         new searchLecList("CUDA GPU 프로그래밍", "최화사",
-                                20230415, 900000, 10),
+                                20230415, 900000, 0),
                         new searchLecList("드론 프로그래밍", "한혜진",
-                                20230429, 390000, 20),
+                                20230429, 390000, 0),
                         new searchLecList("정보처리기사 실기 대비반", "무지개",
-                                20230429, 120000, 15),
+                                20230429, 120000, 0),
                         new searchLecList("R기반 빅데이터 분석, 시각화", "이장우",
-                                20230503, 210000, 30),
+                                20230503, 210000, 0),
                         new searchLecList("증강/가상현실 프로그래밍", "하연태",
-                                20230503, 600000, 20),
+                                20230503, 600000, 0),
                         new searchLecList("SW기업 입사 코딩테스트 대비반", "홍순규",
-                                20230512, 500000, 15),
+                                20230512, 500000, 0),
                         new searchLecList("코딩테스트와 개발실무를 모두 잡는 알고리즘", "김희민",
-                                20230517, 240000, 30)
+                                20230517, 240000, 0)
                 ));
         sr = new StudentRepository();
         st = new Student();
@@ -57,9 +57,10 @@ public class AcademyRepository {
      */
     public void showStudent() {
         System.out.printf("========= 우리학원 학생현황 (총 %d명) ========\n"
-                , sr.getStudentList().size());
+                , sr.getStudentList().size()-1);
         List<Student> studentList = sr.getStudentList();
         for (Student student : studentList) {
+            if ( student.getStudentId().equals("admin")) continue;
             System.out.println("학생정보 " + student);
         }
     }
