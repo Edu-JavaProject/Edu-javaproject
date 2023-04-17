@@ -61,7 +61,7 @@ public class StudentView {
         while (true) {
             inputId = input("* ID: ");
             onStudent = repo.findStudentById(inputId);
-            System.out.println(onStudent);
+//            System.out.println(onStudent);
             if (onStudent == null){
                 System.out.println("\uD83D\uDEA8 아이디가 존재하지 않습니다.");
                 continue;
