@@ -196,7 +196,13 @@ public class AcademyView {
             System.out.printf("* %d. %s\n", i + 1, lec.get(i).lecInform());
         }
         System.out.println("==================================================================================");
-        int choiceLectureNum = Integer.parseInt(input("▶▶ "));
+        int choiceLectureNum = 0;
+        try {
+            choiceLectureNum = Integer.parseInt(input("▶▶ "));
+        } catch (NumberFormatException e) {
+            System.out.println("\uD83D\uDEA8 올바른 강의 번호를 입력해주세요");
+            return;
+        }
         if (choiceLectureNum > lec.size()) {
             System.out.println("\uD83D\uDEA8 올바른 강의 번호를 입력해주세요");
             return;
