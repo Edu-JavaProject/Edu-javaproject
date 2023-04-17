@@ -177,7 +177,7 @@ public class StudentView {
 
         List<LectureManagement> lec = aca.getLec();
         for (int i = 0; i < lec.size(); i++) {
-            System.out.printf("* %d. %s\n",i+1, lec.get(i).lecInform());
+            System.out.printf("* %d. %s\n",i+1, lec.get(i).lecAddInform());
         }
         System.out.println("==============================================================================");
         int choiceLectureNum = Integer.parseInt(input("▶▶ "));

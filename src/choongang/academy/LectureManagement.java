@@ -99,5 +99,11 @@ public class LectureManagement {
                 , this.lectureFee, this.countStudent
         );
     }
+    public String lecAddInform() {
+        return String.format("# %s | %s | %d | %d원 | "
+                , this.lectureName, this.teacherName, this.lectureDate
+                , this.lectureFee
+        );
+    }
 }
 

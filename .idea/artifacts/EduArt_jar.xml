@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="EduArt:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/EduArt_jar</output-path>
+    <root id="archive" name="EduArt.jar">
+      <element id="module-output" name="EduArt" />
+    </root>
+  </artifact>
+</component>

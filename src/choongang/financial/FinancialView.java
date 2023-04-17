@@ -76,9 +76,9 @@ public class FinancialView {
     private static void addList() {
 
         while (true) {
-            System.out.println("\\n####### \\uD83C\\uDF40 지출/수입 등록 \\uD83C\\uDF40 #######");
+            System.out.println("\n####### \uD83C\uDF40 지출/수입 등록 \uD83C\uDF40 #######");
             System.out.println("1. 비용 2. 수입 3.이전 페이지로 돌아가기 ");
-            String selNum = input("\\uD83C\\uDF20 번호를 입력해주세요 >>");
+            String selNum = input("\uD83C\uDF20 번호를 입력해주세요 >>");
             switch (selNum) {
                 //지출 내역 직접 작성해서 costlist에 추가합니다
                 case "1":
