@@ -1,8 +1,6 @@
 # Edu-javaproject
 
 ## 📚주제 : 소규모 학원 운영관리 프로그램(JAVA 기반)
-<strong> [ 홈페이지 사이트 ] </strong>  https://www.hyundaicard.com/index.jsp
-
 <strong> [ 팀 원 ] </strong>
 조상천, 이채원, 신지송 <br>
 <strong> [ 제작 파트 ] </strong> <br>
