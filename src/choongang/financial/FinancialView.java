@@ -102,7 +102,7 @@ public class FinancialView {
                     String incomeTitle = input("* 수입내역 :");
                     try {
                         int income = Integer.parseInt(input("* 금액 : "));
-                        String dateincome = (input("* 날짜(yyyymmdd) : "));
+                        String dateincome = input("* 날짜(yyyymmdd) : ");
                         String incomeMemo = input("* 비고 : ");
                         int addSum = 10000000 + fr.addIncome(incomeTitle, income, stringToDate(dateincome), incomeMemo);
                         System.out.printf("* 이번달 총 수입 : %,d\n", addSum);
@@ -142,7 +142,7 @@ public class FinancialView {
     }
 
 
-    //강사를 프리랜서로 지정. 따라서 새로운
+    //강사를 프리랜서로 지정. 강사마다 시수별 금액 계산 필요.
     private static void showPayroll() {
         System.out.println("\uD83C\uDF20  인건비 조회 내역입니다");
         System.out.println("|  강사명  |    4월 강의료   |");

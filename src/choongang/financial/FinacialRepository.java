@@ -15,8 +15,8 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class FinacialRepository {
-    public Student onStuden = null;
-    StudentView sv;
+
+
     private static AcademyRepository ar;
 
     private static List<Cost> costList = new ArrayList<>(
@@ -108,27 +108,6 @@ public class FinacialRepository {
 
 
     }
-
-
-    public int studentFilter() {
-        List<Student> studentList = StudentRepository.getStudentList();
-        // 수강하는 강의 목록들 가져오기
-        List<LectureManagement> allLecture = studentList.stream()
-                .flatMap(lec -> lec.getRequestClass().stream()).collect(toList());
-
-        int sum = allLecture.stream().mapToInt(n -> n.getLectureMoney()).sum();
-//        List<Integer> collect = allLecture.stream().map(n -> n.getLectureMoney()).collect(toList());
-
-        System.out.println("sum = " + sum);
-        long count = allLecture.stream().mapToInt(n -> n.getLectureMoney()).count();
-        System.out.println("count = " + count);
-
-        return sum;
-    }
-
-
-    //incomelist 한 번만 추가하고 이후엔 추가 되지 않도록 만들기.
-
 
     private static LocalDate intToDate(int date) {
 
